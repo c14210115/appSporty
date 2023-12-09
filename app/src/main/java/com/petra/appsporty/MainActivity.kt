@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+<<<<<<< HEAD
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -37,5 +38,9 @@ class MainActivity : AppCompatActivity() {
     private fun goToFragment(fragment: Fragment) {
         fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment).commit()
+=======
+
+// tes git hubbbhjdfbawebjkfbqwjhkefvbhjkawefweFWAF
+>>>>>>> ff87b6fdc5a3ac8673d8b4bb570a9c5a6ddd2da5
     }
 }
