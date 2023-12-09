@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,7 +23,8 @@ class fragment_list_coach : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var coachListAdapter: CoachListAdapter
+    private lateinit var coachList: List<Coach>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,8 +40,17 @@ class fragment_list_coach : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_coach, container, false)
+        val view = inflater.inflate(R.layout.fragment_list_coach, container, false)
+        val rvCoachList: RecyclerView = view.findViewById(R.id.rvCoachList)
+        val etFilterName: EditText = view.findViewById(R.id.etFilterName)
+        val etFilterLocation: EditText = view.findViewById(R.id.etFilterLocation)
+        val etFilterSportCategory: EditText = view.findViewById(R.id.etFilterSportCategory)
+        val btnApplyFilters: Button = view.findViewById(R.id.btnApplyFilters)
+
+
+        return view
     }
+
 
     companion object {
         /**

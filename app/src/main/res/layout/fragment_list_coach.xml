@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_list_coach"/>
+    tools:context=".fragment_list_coach"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/etFilterName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Filter Name"/>
+
+    <EditText
+        android:id="@+id/etFilterLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Filter Location" />
+
+    <EditText
+        android:id="@+id/etFilterSportCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Filter Category"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnApplyFilters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCoachList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

@@ -24,4 +24,12 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/tvDate"
         app:layout_constraintStart_toEndOf="@+id/tvDate" />
+
+    <TextView
+        android:id="@+id/tvPesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pesanan : "
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="100dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
