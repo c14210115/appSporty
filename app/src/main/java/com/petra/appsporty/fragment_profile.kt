@@ -62,6 +62,7 @@ class fragment_profile : Fragment() {
         return view
     }
     private fun displayProfileData() {
+        //coba pake shrdprf
         val sharedPrefs = requireActivity().getPreferences(android.content.Context.MODE_PRIVATE)
         textViewName.text = "Nama: ${sharedPrefs.getString("name", "")}"
         textViewPhoneNumber.text = "Nomor Telepon: ${sharedPrefs.getString("phoneNumber", "")}"

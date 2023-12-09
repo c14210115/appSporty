@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.navBarList.setOnClickListener {
-            //nanti panggil halaman list nya d sni
+            goToFragment(fragment_list_coach())
         }
 
         binding.navBarFav.setOnClickListener {
