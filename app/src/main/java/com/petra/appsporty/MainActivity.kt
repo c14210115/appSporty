@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.navBarFav.setOnClickListener {
-            //nanti panggil halaman favorit nya di sni
+            goToFragment(fragment_favorite())
         }
 
     }
