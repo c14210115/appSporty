@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 
 
@@ -32,8 +33,8 @@ class CoachListAdapter (
         private val tvCoachLocation: TextView = itemView.findViewById(R.id.tvCoachLocation)
         private val tvCoachAge: TextView = itemView.findViewById(R.id.tvCoachAge)
         private val tvCoachPrice: TextView = itemView.findViewById(R.id.tvCoachPrice)
-        val btnInfo: Button = itemView.findViewById(R.id.btnInfo)
-        val btnFavorite: Button = itemView.findViewById(R.id.btnFavorite)
+        val btnDetail: Button = itemView.findViewById(R.id.btnInfo)
+        val btnFavorite: ImageButton = itemView.findViewById(R.id.btnFavorite)
 
         fun bind(coach: Coach) {
             tvCoachName.text = "Name: ${coach.name}"

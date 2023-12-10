@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -45,7 +46,8 @@ class fragment_list_coach : Fragment() {
         val etFilterName: EditText = view.findViewById(R.id.etFilterName)
         val etFilterLocation: EditText = view.findViewById(R.id.etFilterLocation)
         val etFilterSportCategory: EditText = view.findViewById(R.id.etFilterSportCategory)
-        val btnApplyFilters: Button = view.findViewById(R.id.btnApplyFilters)
+        val btnApplyFilters: ImageButton = view.findViewById(R.id.btnApplyFilters)
+
 
 
         return view
