@@ -30,7 +30,7 @@
         android:id="@+id/etFilterSportCategory"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="7dp"
         android:hint="Category"
         app:layout_constraintEnd_toStartOf="@+id/btnApplyFilters"
         app:layout_constraintTop_toTopOf="@+id/etFilterName" />
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/circle_bg"
         android:backgroundTint="#CDCDCD"
         android:src="@drawable/search"

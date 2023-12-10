@@ -1,19 +1,19 @@
 package com.petra.appsporty
 
 data class Coach(
-    val foto: String,
+    val photo: String,
     val name: String,
-    val kategori: String,
+    val category: String,
     val location: String,
     val age: String,
-    val price: Int,
-    val isfav: Boolean,
-    val rating: Double,
-    val trained: Int,
+    val price: String,
+    val isfav: String,
+    val rating: String,
+    val trained: String,
     val notes: String,
     val telp: String,
     val instagram: String,
     val lapangan: String,
-    val jam: String,
+    val time: String,
 
 )
