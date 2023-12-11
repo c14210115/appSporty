@@ -49,7 +49,7 @@ class CoachListAdapter (
             coach.photo, "drawable", context.packageName
         )
         holder.imgCoachImage.setImageResource(imageRes)
-        holder.imgCoachImage.scaleType
+
         holder.bind(coach)
 
 
