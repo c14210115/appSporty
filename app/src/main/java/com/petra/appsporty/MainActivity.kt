@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment).commit()
 
+        //set page title
         val pageTitle = when (fragment) {
             is fragment_home -> "SPORTY"
             is fragment_profile -> "PROFILE"
