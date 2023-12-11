@@ -2,6 +2,8 @@ package com.petra.appsporty
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.petra.appsporty.databinding.ActivityMainBinding
@@ -40,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment).commit()
 
-        //set page title
         val pageTitle = when (fragment) {
             is fragment_home -> "SPORTY"
             is fragment_profile -> "PROFILE"
@@ -50,5 +51,25 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.textJudulHalaman.text = pageTitle
+
+        //mengubah warna navbar dibawah
+        when (fragment) {
+            is fragment_home -> {
+                Log.d("HOME", "masuk")
+                binding.navBarHome.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.white)
+                binding.navBarList.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+                binding.navBarFav.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+            }
+            is fragment_list_coach -> {
+                binding.navBarHome.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+                binding.navBarList.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.white)
+                binding.navBarFav.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+            }
+            is fragment_favorite -> {
+                binding.navBarHome.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+                binding.navBarList.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+                binding.navBarFav.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.white)
+            }
+        }
     }
 }

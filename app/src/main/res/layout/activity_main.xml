@@ -14,8 +14,8 @@
         android:name="com.petra.appsporty.fragment_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:background="#FFFFFF"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/roundedcornermain"
         app:layout_constraintBottom_toTopOf="@+id/navBarHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,7 +35,7 @@
         android:id="@+id/imageView2"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,8 +43,9 @@
 
     <ImageButton
         android:id="@+id/navBarHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:background="@drawable/roundedcornerbar"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/ic_home"
         app:layout_constraintBottom_toBottomOf="@+id/navBarList"
@@ -53,19 +54,22 @@
 
     <ImageButton
         android:id="@+id/navBarList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
         android:layout_marginStart="40dp"
+        android:background="@drawable/roundedcornerbar"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/ic_list"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView" />
 
     <ImageButton
         android:id="@+id/navBarFav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
         android:layout_marginEnd="40dp"
+        android:background="@drawable/roundedcornerbar"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/ic_favorite"
         app:layout_constraintBottom_toBottomOf="@+id/navBarHome"
@@ -76,7 +80,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:text="SPORTY"
         android:textAlignment="center"

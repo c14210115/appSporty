@@ -37,15 +37,15 @@
 
     <ImageButton
         android:id="@+id/btnApplyFilters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/circle_bg"
-        android:backgroundTint="#CDCDCD"
+        android:backgroundTint="#0017AA"
         android:src="@drawable/search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etFilterSportCategory" />
+        app:layout_constraintTop_toTopOf="@+id/etFilterSportCategory"
+        app:tint="#FFFFFF" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCoachList"
