@@ -39,5 +39,14 @@ class MainActivity : AppCompatActivity() {
         fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment).commit()
 
+        val pageTitle = when (fragment) {
+            is fragment_home -> "SPORTY"
+            is fragment_profile -> "PROFILE"
+            is fragment_list_coach -> "COACH LIST"
+            is fragment_favorite -> "FAVORITES"
+            else -> "SPORTY" // Teks default jika tidak ada yang cocok
+        }
+
+        binding.textJudulHalaman.text = pageTitle
     }
 }
