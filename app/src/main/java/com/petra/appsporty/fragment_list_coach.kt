@@ -186,8 +186,11 @@ class fragment_list_coach : Fragment() {
 //
 //                        }).show()
 //            }
-            override fun onItemClicked(data: Coach) {
-                TODO("Not yet implemented")
+            override fun onItemClicked(pos: Int) {
+                _favorit[pos] = "True"
+                coachList.clear()
+                TambahData()
+                TampilkanData()
             }
 
             override fun delData(pos: Int) {

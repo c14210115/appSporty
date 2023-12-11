@@ -1,6 +1,9 @@
 package com.petra.appsporty
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuView.ItemView
+import androidx.core.content.ContextCompat
 
 class CoachListAdapter (
     private val coachList: ArrayList<Coach>,
@@ -27,7 +31,7 @@ class CoachListAdapter (
 
     interface OnItemClickCallback {
 
-        fun onItemClicked(data : Coach)
+        fun onItemClicked(pos: Int)
         //        fun onItemClicked(data : Map<String, String>)
         fun delData(pos: Int)
 
@@ -50,8 +54,8 @@ class CoachListAdapter (
 
 
         holder.btnFavorite.setOnClickListener{
-////            Toast.makeText(holder.itemView.context, pahlawan.nama, Toast.LENGTH_LONG).show()
-//            onItemClickCallback.onItemClicked(listPahlawan[position])
+            onItemClickCallback.onItemClicked(position)
+            Log.d("FAV", "masuk fav")
         }
         //Anton : Ini buat ke halaman detail
         holder.btnDetail.setOnClickListener{
@@ -105,7 +109,12 @@ class CoachListAdapter (
             tvCoachRating.text = coach.rating
 
             if(coach.isfav == "True"){
-                btnFavorite.setBackgroundResource(R.drawable.fullfav)
+                Log.d("isFAV", "favorite")
+                btnFavorite.setImageResource(R.drawable.fullfav)
+
+            } else{
+                btnFavorite.setImageResource(R.drawable.borderfav)
+
             }
 
 

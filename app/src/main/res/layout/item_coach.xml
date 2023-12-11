@@ -107,14 +107,12 @@
 
                 <ImageButton
                     android:id="@+id/btnFavorite"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="56dp"
-                    android:background="#F80202"
                     android:backgroundTint="#00FFFFFF"
-                    android:src="@drawable/borderfav"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
