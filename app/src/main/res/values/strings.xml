@@ -46,87 +46,87 @@
         <item>29</item>
     </string-array>
 
-<!--    kukomen soale erorr gtw knp-->
-<!--    <String-array name="hargacoach">-->
-<!--        <item>200000</item>-->
-<!--        <item>300000</item>-->
-<!--        <item>900000</item>-->
-<!--        <item>400000</item>-->
-<!--        <item>700000</item>-->
-<!--        <item>500000</item>-->
-<!--    </String-array>-->
+    kukomen soale erorr gtw knp
+    <string-array name="hargacoach">
+        <item>200000</item>
+        <item>300000</item>
+        <item>900000</item>
+        <item>400000</item>
+        <item>700000</item>
+        <item>500000</item>
+    </string-array>
 
-<!--    <String-array name="ratingcoach">-->
-<!--        <item>4.9</item>-->
-<!--        <item>4.9</item>-->
-<!--        <item>4.8</item>-->
-<!--        <item>4.9</item>-->
-<!--        <item>4.5</item>-->
-<!--        <item>5.0</item>-->
-<!--    </String-array>-->
+    <string-array name="ratingcoach">
+        <item>4.9</item>
+        <item>4.9</item>
+        <item>4.8</item>
+        <item>4.9</item>
+        <item>4.5</item>
+        <item>5.0</item>
+    </string-array>
 
-<!--    <String-array name="favCoach">-->
-<!--        <item>False</item>-->
-<!--        <item>False</item>-->
-<!--        <item>False</item>-->
-<!--        <item>False</item>-->
-<!--        <item>False</item>-->
-<!--        <item>False</item>-->
-<!--    </String-array>-->
+    <string-array name="favcoach">
+        <item>False</item>
+        <item>False</item>
+        <item>False</item>
+        <item>False</item>
+        <item>False</item>
+        <item>False</item>
+    </string-array>
 
-<!--    <String-array name="trainedcoach">-->
-<!--        <item>59</item>-->
-<!--        <item>34</item>-->
-<!--        <item>50</item>-->
-<!--        <item>60</item>-->
-<!--        <item>23</item>-->
-<!--        <item>8</item>-->
-<!--    </String-array>-->
+    <string-array name="trainedcoach">
+        <item>59</item>
+        <item>34</item>
+        <item>50</item>
+        <item>60</item>
+        <item>23</item>
+        <item>8</item>
+    </string-array>
 
-<!--    <String-array name="notescoach">-->
-<!--        <item>Halo, saya virga. Pelatih badminton yang sudah 10 tahun berpengalaman. Jangan lupa siapkan alat-alat ya jika berlatih dengan saya. Latihan berfokus pada pengembangan bakat dan minat murid untuk mengikuti pertandingan bulutangkis.</item>-->
-<!--        <item>Halo, saya Sony. Saya merupakan atlet bulutangkis internasional yang menjadi pelatih badminton. Berlatihlah dengan saya di Lapangan Badminton Sony Dwi Kuncoro.</item>-->
-<!--        <item>Perkenalkan saya Surya, pelatih sepak bola terkenal di Malang. Saya sudah berpengalaman membawa tim sepak bola Malang, bergabunglah dengan ku untuk meningkatkan bakat dan minat sepak bolamu.</item>-->
-<!--        <item>Hi saya Herry Iman. Saya memiliki pengalaman melatih altet nasional seperti Kevin Sanjaya, Markus Gideon, dan lainnya. Bergabunglah bersama saya untuk mengikuti program latihan bulutangkis yang berbeda dengan lainnya. Program ini berfokus pada peningkatan bakat dan minat serta kesenangan atlet badminton </item>-->
-<!--        <item>Hi, saya merupakan pelatih sepakbola dari Sidoarjo. Saya berawal dari China dan telah mendapatkan tugas untuk melatih di daerah sidoarjo, untuk meningkatkan mutu dari tim sepak bola sidoarjo. Bergabunglah bersama saya.</item>-->
-<!--        <item>Halo, saya Alex. Ingin memiliki badan yang ideal? Ingin memiliki pola hidup yang sehat? Berlatihlah denganku, dengan program pelatihan yang saya bawakan, maka Anda dapat mengikuti gaya hidup sehat</item>-->
-<!--    </String-array>-->
+    <string-array name="notescoach">
+        <item>Halo, saya virga. Pelatih badminton yang sudah 10 tahun berpengalaman. Jangan lupa siapkan alat-alat ya jika berlatih dengan saya. Latihan berfokus pada pengembangan bakat dan minat murid untuk mengikuti pertandingan bulutangkis.</item>
+        <item>Halo, saya Sony. Saya merupakan atlet bulutangkis internasional yang menjadi pelatih badminton. Berlatihlah dengan saya di Lapangan Badminton Sony Dwi Kuncoro.</item>
+        <item>Perkenalkan saya Surya, pelatih sepak bola terkenal di Malang. Saya sudah berpengalaman membawa tim sepak bola Malang, bergabunglah dengan ku untuk meningkatkan bakat dan minat sepak bolamu.</item>
+        <item>Hi saya Herry Iman. Saya memiliki pengalaman melatih altet nasional seperti Kevin Sanjaya, Markus Gideon, dan lainnya. Bergabunglah bersama saya untuk mengikuti program latihan bulutangkis yang berbeda dengan lainnya. Program ini berfokus pada peningkatan bakat dan minat serta kesenangan atlet badminton </item>
+        <item>Hi, saya merupakan pelatih sepakbola dari Sidoarjo. Saya berawal dari China dan telah mendapatkan tugas untuk melatih di daerah sidoarjo, untuk meningkatkan mutu dari tim sepak bola sidoarjo. Bergabunglah bersama saya.</item>
+        <item>Halo, saya Alex. Ingin memiliki badan yang ideal? Ingin memiliki pola hidup yang sehat? Berlatihlah denganku, dengan program pelatihan yang saya bawakan, maka Anda dapat mengikuti gaya hidup sehat</item>
+    </string-array>
 
-<!--    <String-array name="telpcoach">-->
-<!--        <item>081370934331</item>-->
-<!--        <item>081247434343</item>-->
-<!--        <item>081326016984</item>-->
-<!--        <item>081726783434</item>-->
-<!--        <item>081204729374</item>-->
-<!--        <item>081894897305</item>-->
-<!--    </String-array>-->
+    <string-array name="telpcoach">
+        <item>081370934331</item>
+        <item>081247434343</item>
+        <item>081326016984</item>
+        <item>081726783434</item>
+        <item>081204729374</item>
+        <item>081894897305</item>
+    </string-array>
 
-<!--    <String-array name="instagramcoach">-->
-<!--        <item>@virganatasantoso</item>-->
-<!--        <item>@sonydwikuncoro</item>-->
-<!--        <item>@christianphilip10</item>-->
-<!--        <item>@anthonygunawan</item>-->
-<!--        <item>@keshaangie</item>-->
-<!--        <item>@alex.000</item>-->
-<!--    </String-array>-->
-<!--    &lt;!&ndash;    ini kalau mau dibuat banyak tinggal dikasih pemisah, nanti dipisah contoh "|"&ndash;&gt;-->
-<!--    <String-array name="lapangancoach">-->
-<!--        <item>GOR Talenta</item>-->
-<!--        <item>Sony Dwi Kuncoro Badminton Hall</item>-->
-<!--        <item>Stadion Malang</item>-->
-<!--        <item>Sport Center Hall</item>-->
-<!--        <item>Stadion Putra</item>-->
-<!--        <item>FitHub</item>-->
-<!--    </String-array>-->
-<!--    &lt;!&ndash;    ini kalau mau dibuat banyak tinggal dikasih pemisah, nanti dipisah contoh "|"&ndash;&gt;-->
-<!--    <String-array name="jamcoach">-->
-<!--        <item>09:00-12:00|12:00-15:00|17:00-20:00</item>-->
-<!--        <item>09:00-12:00|12:00-15:00|17:00-20:00</item>-->
-<!--        <item>10:00-14:00</item>-->
-<!--        <item>12:00-15:00|19:00-22:00|</item>-->
-<!--        <item>10:00-13:00|17:00-20:00</item>-->
-<!--        <item>11:00-13:00|14:00-16:00|17:00-19:00</item>-->
-<!--    </String-array>-->
+    <string-array name="instagramcoach">
+        <item>virganatasantoso</item>
+        <item>sonydwikuncoro</item>
+        <item>christianphilip10</item>
+        <item>anthonygunawan</item>
+        <item>keshaangie</item>
+        <item>alex.000</item>
+    </string-array>
+    <!--    ini kalau mau dibuat banyak tinggal dikasih pemisah, nanti dipisah contoh "|"-->
+    <string-array name="lapangancoach">
+        <item>GOR Talenta</item>
+        <item>Sony Dwi Kuncoro Badminton Hall</item>
+        <item>Stadion Malang</item>
+        <item>Sport Center Hall</item>
+        <item>Stadion Putra</item>
+        <item>FitHub</item>
+    </string-array>
+    <!--    ini kalau mau dibuat banyak tinggal dikasih pemisah, nanti dipisah contoh "|"-->
+    <string-array name="jamcoach">
+        <item>09:00-12:00|12:00-15:00|17:00-20:00</item>
+        <item>09:00-12:00|12:00-15:00|17:00-20:00</item>
+        <item>10:00-14:00</item>
+        <item>12:00-15:00|19:00-22:00|</item>
+        <item>10:00-13:00|17:00-20:00</item>
+        <item>11:00-13:00|14:00-16:00|17:00-19:00</item>
+    </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

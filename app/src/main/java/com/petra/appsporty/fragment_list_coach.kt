@@ -108,17 +108,17 @@ class fragment_list_coach : Fragment() {
         _kategori = resources.getStringArray(R.array.kategoricoach).toMutableList()
         _lokasi = resources.getStringArray(R.array.lokasicoach).toMutableList()
         _umur = resources.getStringArray(R.array.umurcoach).toMutableList()
-//        //knp eror ya anjg
-//        _favorit = resources.getStringArray(R.array.favcoach).toMutableList()
-//        _harga = resources.getStringArray(R.array.hargacoach).toMutableList()
-//        _rating = resources.getStringArray(R.array.ratingcoach).toMutableList()
-//
-//        _trained = resources.getStringArray(R.array.trainedcoach).toMutableList()
-//        _notes = resources.getStringArray(R.array.notescoach).toMutableList()
-//        _lapangan = resources.getStringArray(R.array.lapangancoach).toMutableList()
-//        _jam = resources.getStringArray(R.array.jamcoach).toMutableList()
-//        _telp= resources.getStringArray(R.array.telpcoach).toMutableList()
-//        _instagram= resources.getStringArray(R.array.instagramcoach).toMutableList()
+
+        _favorit = resources.getStringArray(R.array.favcoach).toMutableList()
+        _harga = resources.getStringArray(R.array.hargacoach).toMutableList()
+        _rating = resources.getStringArray(R.array.ratingcoach).toMutableList()
+
+        _trained = resources.getStringArray(R.array.trainedcoach).toMutableList()
+        _notes = resources.getStringArray(R.array.notescoach).toMutableList()
+        _lapangan = resources.getStringArray(R.array.lapangancoach).toMutableList()
+        _jam = resources.getStringArray(R.array.jamcoach).toMutableList()
+        _telp= resources.getStringArray(R.array.telpcoach).toMutableList()
+        _instagram= resources.getStringArray(R.array.instagramcoach).toMutableList()
 
 
     }
