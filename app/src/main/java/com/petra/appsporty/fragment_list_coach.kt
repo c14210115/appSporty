@@ -79,11 +79,7 @@ class fragment_list_coach : Fragment() {
         val view = inflater.inflate(R.layout.fragment_list_coach, container, false)
         val rvCoachList: RecyclerView = view.findViewById(R.id.rvCoachList)
         val etFilterName: EditText = view.findViewById(R.id.etFilterName)
-        val etFilterLocation: EditText = view.findViewById(R.id.etFilterLocation)
-        val etFilterSportCategory: EditText = view.findViewById(R.id.etFilterSportCategory)
         val btnApplyFilters: ImageButton = view.findViewById(R.id.btnApplyFilters)
-
-
 
         return view
     }

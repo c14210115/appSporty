@@ -4,36 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
     tools:context=".fragment_list_coach">
 
     <EditText
         android:id="@+id/etFilterName"
-        android:layout_width="140dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:hint="Name"
+        android:backgroundTint="#0017AA"
+        android:hint="Filter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etFilterLocation"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:hint="Location"
-        app:layout_constraintEnd_toStartOf="@+id/etFilterSportCategory"
-        app:layout_constraintStart_toEndOf="@+id/etFilterName"
-        app:layout_constraintTop_toTopOf="@+id/etFilterName" />
-
-    <EditText
-        android:id="@+id/etFilterSportCategory"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
-        android:hint="Category"
-        app:layout_constraintEnd_toStartOf="@+id/btnApplyFilters"
-        app:layout_constraintTop_toTopOf="@+id/etFilterName" />
 
     <ImageButton
         android:id="@+id/btnApplyFilters"
@@ -44,7 +27,7 @@
         android:backgroundTint="#0017AA"
         android:src="@drawable/search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etFilterSportCategory"
+        app:layout_constraintTop_toTopOf="@+id/etFilterName"
         app:tint="#FFFFFF" />
 
     <androidx.recyclerview.widget.RecyclerView
