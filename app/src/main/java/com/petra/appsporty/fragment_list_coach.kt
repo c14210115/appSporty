@@ -1,5 +1,6 @@
 package com.petra.appsporty
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,8 +29,7 @@ class fragment_list_coach : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var coachListAdapter: CoachListAdapter
-    private lateinit var coachList: List<Coach>
-
+    private var coachList = arrayListOf<Coach>()
     //data"coach
     private var _nama: MutableList<String> = emptyList<String>().toMutableList()
     private var _foto: MutableList<String> = emptyList<String>().toMutableList()
@@ -59,8 +62,8 @@ class fragment_list_coach : Fragment() {
 
         _rvCoach = view.findViewById(R.id.rvCoachList)
         SiapkanData()
-//        TambahData()
-//        TampilkanData()
+        TambahData()
+        TampilkanData()
     }
 
 
@@ -108,7 +111,7 @@ class fragment_list_coach : Fragment() {
         _kategori = resources.getStringArray(R.array.kategoricoach).toMutableList()
         _lokasi = resources.getStringArray(R.array.lokasicoach).toMutableList()
         _umur = resources.getStringArray(R.array.umurcoach).toMutableList()
-
+//        //knp eror ya anjg
         _favorit = resources.getStringArray(R.array.favcoach).toMutableList()
         _harga = resources.getStringArray(R.array.hargacoach).toMutableList()
         _rating = resources.getStringArray(R.array.ratingcoach).toMutableList()
@@ -119,7 +122,74 @@ class fragment_list_coach : Fragment() {
         _jam = resources.getStringArray(R.array.jamcoach).toMutableList()
         _telp= resources.getStringArray(R.array.telpcoach).toMutableList()
         _instagram= resources.getStringArray(R.array.instagramcoach).toMutableList()
+    }
 
+    private fun TambahData() {
+        for (position in _nama.indices) {
+            val data = Coach(
+                _foto[position],
+                _nama[position],
+                _kategori[position],
+                _lokasi[position],
+                _umur[position],
+                _harga[position],
+                _favorit[position],
+                _rating[position],
+                _trained[position],
+                _notes[position],
+                _telp[position],
+                _instagram[position],
+                _lapangan[position],
+                _jam[position]
+            )
+            coachList.add(data)
+        }
+    }
+
+    private fun TampilkanData() {
+//        _rvPahlawan.layoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
+        _rvCoach.layoutManager = LinearLayoutManager(requireContext())
+//        _rvPahlawan.adapter = adapterPahlawan(arPahlawan)
+
+        val adapterP = CoachListAdapter(coachList)
+        _rvCoach.adapter = adapterP
+
+        adapterP.setOnItemClickCallback(object: CoachListAdapter.OnItemClickCallback {
+
+            //            override fun detData(pos: Int) {
+//                AlertDialog.Builder(requireContext())
+//                    .setTitle("DETAIL")
+//                    .setMessage("Nama: "+ _namaKontak[pos]+ " \n" + "Nomor Telp: " + _notelpKontak[pos]
+//                            + "\n"+ "Alamat: " + _alamatKontak[pos])
+//                    //Untuk hapus, disini pake positve hehe, sebenrnya bisa di negative
+//                    .setPositiveButton("HAPUS", DialogInterface.OnClickListener { dialog, which ->
+//                        Toast.makeText(
+//                            requireContext(),
+//                            "DATA BERHASIL DIHAPUS",
+//                            Toast.LENGTH_SHORT).show()
+//                        _namaKontak.removeAt(pos)
+//                        _alamatKontak.removeAt(pos)
+//                        _notelpKontak.removeAt(pos)
+//                        _fotoKontak.removeAt(pos)
+//                        arrData.clear()
+//                        TambahData()
+//                        TampilkanData()
+//                    })
+//
+//                    //untuk tutup
+//                    .setNegativeButton("CLOSE",
+//                        DialogInterface.OnClickListener { dialog, which ->
+//
+//                        }).show()
+//            }
+            override fun onItemClicked(data: Coach) {
+                TODO("Not yet implemented")
+            }
+
+            override fun delData(pos: Int) {
+                TODO("Not yet implemented")
+            }
+        })
 
     }
 }
