@@ -1,5 +1,9 @@
 package com.petra.appsporty
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Coach(
     val photo: String,
     val name: String,
@@ -16,4 +20,4 @@ data class Coach(
     val lapangan: String,
     val time: String,
 
-)
+) : Parcelable

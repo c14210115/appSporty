@@ -30,6 +30,7 @@ class fragment_list_coach : Fragment() {
     private var param2: String? = null
     private lateinit var coachListAdapter: CoachListAdapter
     private var coachList = arrayListOf<Coach>()
+
     //data"coach
     private var _nama: MutableList<String> = emptyList<String>().toMutableList()
     private var _foto: MutableList<String> = emptyList<String>().toMutableList()
@@ -64,6 +65,9 @@ class fragment_list_coach : Fragment() {
         SiapkanData()
         TambahData()
         TampilkanData()
+
+        var btnDetail = view.findViewById<Button>(R.id.btnInfo)
+
     }
 
 

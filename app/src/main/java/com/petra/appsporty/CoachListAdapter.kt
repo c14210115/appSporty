@@ -1,5 +1,6 @@
 package com.petra.appsporty
 
+import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuView.ItemView
 
 class CoachListAdapter (
@@ -51,9 +53,30 @@ class CoachListAdapter (
 ////            Toast.makeText(holder.itemView.context, pahlawan.nama, Toast.LENGTH_LONG).show()
 //            onItemClickCallback.onItemClicked(listPahlawan[position])
         }
-
+        //Anton : Ini buat ke halaman detail
         holder.btnDetail.setOnClickListener{
+            val coachData = coachList[position]
 
+            val bundle = Bundle().apply {
+                putString("nama", coachData.name)
+                putString("gambar", coachData.photo)
+                putString("harga", coachData.price)
+                putString("cabor", coachData.category)
+                putString("umur", coachData.age)
+                putString("rate", coachData.rating)
+                putString("note", coachData.notes)
+                putString("ig", coachData.instagram)
+                putString("wa", coachData.telp)
+                putString("lokasi", coachData.location)
+            }
+            val detailCoachFragment = fragment_detail_coach.newInstance("data1","data2")
+            detailCoachFragment.arguments = bundle
+
+            // Memulai transaksi untuk pindah ke halaman detail
+            val transaction = (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, detailCoachFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
     }
 

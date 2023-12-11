@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        goToFragment(fragment_home())
 
         binding.navBarHome.setOnClickListener {
             goToFragment(fragment_home())

@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import org.w3c.dom.Text
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,6 +20,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [fragment_detail_coach.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+//Anton buat ini ya gaes hehehe
 class fragment_detail_coach : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -34,7 +40,48 @@ class fragment_detail_coach : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_coach, container, false)
+        val view = inflater.inflate(R.layout.fragment_detail_coach, container, false)
+
+        var imageDetail = view.findViewById<ImageView>(R.id.imgCoachDetail)
+        var tvNama = view.findViewById<TextView>(R.id.tvNama)
+        var tvCabor = view.findViewById<TextView>(R.id.tvCabor)
+        var tvLokasi = view.findViewById<TextView>(R.id.tvLokasi)
+        var tvUmur = view.findViewById<TextView>(R.id.tvLokasi)
+        var tvInstagram = view.findViewById<TextView>(R.id.tvIg)
+        var tvWA = view.findViewById<TextView>(R.id.tvWA)
+        var btnOrder = view.findViewById<Button>(R.id.btnOrder)
+        var tvCoachPrice = view.findViewById<TextView>(R.id.tvCoachprice)
+        var tvRate = view.findViewById<TextView>(R.id.tvRateDetail)
+        var tvNotes = view.findViewById<TextView>(R.id.tvDispNotes)
+
+        val nama = arguments?.getString("nama")
+        val gambar = arguments?.getString("gambar")
+        val harga = arguments?.getString("harga")
+        val cabor = arguments?.getString("cabor")
+        val umur = arguments?.getString("umur")
+        val rate = arguments?.getString("rate")
+        val note = arguments?.getString("note")
+        val ig = arguments?.getString("ig")
+        val wa = arguments?.getString("wa")
+        val lokasi = arguments?.getString("lokasi")
+
+        //membaca image
+        val imageRes = context?.resources?.getIdentifier(
+            gambar, "drawable", context?.packageName
+        )
+        imageDetail.setImageResource(imageRes!!)
+        imageDetail.scaleType
+        tvNama.text = nama
+        tvCabor.text = cabor
+        tvLokasi.text = lokasi
+        tvUmur.text = umur
+        tvInstagram.text = ig
+        tvWA.text = wa
+        tvCoachPrice.text = harga
+        tvRate.text = rate
+        tvNotes.text = note
+
+        return view
     }
 
     companion object {
