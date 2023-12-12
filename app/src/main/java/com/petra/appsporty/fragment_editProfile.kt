@@ -48,7 +48,7 @@ class fragment_editProfile : Fragment() {
         editTextPhoneNumber = view.findViewById(R.id.editTextPhoneNumber)
         editTextAge = view.findViewById(R.id.editTextAge)
         editTextEmail = view.findViewById(R.id.editTextEmail)
-        editTextExperience = view.findViewById(R.id.editTextExperience)
+        editTextExperience = view.findViewById(R.id.editTextCategory)
         buttonSave = view.findViewById(R.id.buttonSave)
 
         // Menyimpan perubahan ketika tombol Simpan diklik

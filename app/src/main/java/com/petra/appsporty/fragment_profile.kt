@@ -44,12 +44,12 @@ class fragment_profile : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        textViewName = view.findViewById(R.id.textViewName)
-        textViewPhoneNumber = view.findViewById(R.id.textViewPhoneNumber)
-        textViewAge = view.findViewById(R.id.textViewAge)
-        textViewEmail = view.findViewById(R.id.textViewEmail)
-        textViewExperience = view.findViewById(R.id.textViewExperience)
-        buttonEdit = view.findViewById(R.id.buttonEdit)
+        textViewName = view.findViewById(R.id.editTextName)
+        textViewPhoneNumber = view.findViewById(R.id.editTextPhoneNumber)
+        textViewAge = view.findViewById(R.id.editTextAge)
+        textViewEmail = view.findViewById(R.id.editTextEmail)
+        textViewExperience = view.findViewById(R.id.editTextCategory)
+        buttonEdit = view.findViewById(R.id.buttonSave)
 
         //Data profile ny d tmpilin
         displayProfileData()
