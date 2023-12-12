@@ -1,5 +1,6 @@
 package com.petra.appsporty
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,6 +30,7 @@ class fragment_profile : Fragment() {
     private lateinit var textViewEmail: TextView
     private lateinit var textViewExperience: TextView
     private lateinit var buttonEdit: Button
+    private lateinit var buttonLogout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,13 +46,20 @@ class fragment_profile : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        textViewName = view.findViewById(R.id.editTextName)
-        textViewPhoneNumber = view.findViewById(R.id.editTextPhoneNumber)
-        textViewAge = view.findViewById(R.id.editTextAge)
-        textViewEmail = view.findViewById(R.id.editTextEmail)
-        textViewExperience = view.findViewById(R.id.editTextCategory)
-        buttonEdit = view.findViewById(R.id.buttonSave)
+        textViewName = view.findViewById(R.id.textViewName)
+        textViewPhoneNumber = view.findViewById(R.id.textViewPhoneNumber)
+        textViewAge = view.findViewById(R.id.textViewAge)
+        textViewEmail = view.findViewById(R.id.textViewEmail)
+        textViewExperience = view.findViewById(R.id.textViewCategory)
+        buttonEdit = view.findViewById(R.id.buttonEdit)
 
+
+        //coba logout
+        buttonLogout = view.findViewById(R.id.btnLogout)
+        buttonLogout.setOnClickListener{
+            val intentWithData = Intent(requireActivity(),LoginPage::class.java)
+            startActivity(intentWithData)
+        }
         //Data profile ny d tmpilin
         displayProfileData()
 

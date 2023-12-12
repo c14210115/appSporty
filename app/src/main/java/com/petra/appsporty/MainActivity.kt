@@ -92,6 +92,15 @@ class MainActivity : AppCompatActivity() {
                 binding.tvListCoachBar.setTypeface(null, Typeface.NORMAL)
                 binding.tvFavBar.setTypeface(null, Typeface.BOLD)
             }
+            is fragment_profile -> {
+                binding.navBarHome.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+                binding.navBarList.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+                binding.navBarFav.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+
+                binding.tvHomeBar.setTypeface(null, Typeface.NORMAL)
+                binding.tvListCoachBar.setTypeface(null, Typeface.NORMAL)
+                binding.tvFavBar.setTypeface(null, Typeface.NORMAL)
+            }
         }
     }
 }
