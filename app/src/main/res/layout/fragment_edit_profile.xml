@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:backgroundTint="#0017AA"
             android:text="Save"
             android:textSize="19sp"
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name"
-                android:textColor="#595959"
+                android:textColor="#939393"
                 android:textSize="17sp" />
 
             <Space
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Age"
-                android:textColor="#595959"
+                android:textColor="#939393"
                 android:textSize="17sp" />
 
             <Space
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Gender"
-                android:textColor="#595959"
+                android:textColor="#939393"
                 android:textSize="17sp" />
 
             <Space
@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
-                android:textColor="#595959"
+                android:textColor="#939393"
                 android:textSize="17sp" />
 
             <Space
@@ -139,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Email Address"
-                android:textColor="#595959"
+                android:textColor="#939393"
                 android:textSize="17sp" />
 
             <Space
@@ -163,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Main Sport Category"
-                android:textColor="#595959"
+                android:textColor="#939393"
                 android:textSize="17sp" />
 
             <Space
@@ -187,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textColor="#595959"
+                android:textColor="#939393"
                 android:textSize="17sp" />
 
             <Space
