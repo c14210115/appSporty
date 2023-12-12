@@ -19,5 +19,5 @@ data class Coach(
     val instagram: String,
     val lapangan: String,
     val time: String,
-
+//    var isFavorite: Boolean = false
 ) : Parcelable

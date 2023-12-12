@@ -81,6 +81,16 @@ class fragment_detail_coach : Fragment() {
         tvRate.text = rate
         tvNotes.text = note
 
+        btnOrder.setOnClickListener {
+            // Buat instance fragment pemesanan coach
+            val orderCoachFragment = fragment_pemesanan_coach.newInstance("data1", "data2")
+
+            // Melakukan transaksi untuk pindah ke fragment pemesanan coach
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, orderCoachFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
         return view
     }
 
