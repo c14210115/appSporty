@@ -1,5 +1,8 @@
 package com.petra.appsporty
 
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -53,22 +56,41 @@ class MainActivity : AppCompatActivity() {
         binding.textJudulHalaman.text = pageTitle
 
         //mengubah warna navbar dibawah
+        //untuk ikon
+        val color = "#28D5F3"
+        val colorInt = Color.parseColor(color)
+        val colorStateList = ColorStateList.valueOf(colorInt)
+
+
         when (fragment) {
             is fragment_home -> {
                 Log.d("HOME", "masuk")
-                binding.navBarHome.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.white)
+                binding.navBarHome.backgroundTintList = colorStateList
                 binding.navBarList.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
                 binding.navBarFav.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+
+                //untuk textnya diubah di bold
+                binding.tvHomeBar.setTypeface(null, Typeface.BOLD)
+                binding.tvListCoachBar.setTypeface(null, Typeface.NORMAL)
+                binding.tvFavBar.setTypeface(null, Typeface.NORMAL)
             }
             is fragment_list_coach -> {
                 binding.navBarHome.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
-                binding.navBarList.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.white)
+                binding.navBarList.backgroundTintList = colorStateList
                 binding.navBarFav.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
+
+                binding.tvHomeBar.setTypeface(null, Typeface.NORMAL)
+                binding.tvListCoachBar.setTypeface(null, Typeface.BOLD)
+                binding.tvFavBar.setTypeface(null, Typeface.NORMAL)
             }
             is fragment_favorite -> {
                 binding.navBarHome.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
                 binding.navBarList.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.transparent)
-                binding.navBarFav.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.white)
+                binding.navBarFav.backgroundTintList = colorStateList
+
+                binding.tvHomeBar.setTypeface(null, Typeface.NORMAL)
+                binding.tvListCoachBar.setTypeface(null, Typeface.NORMAL)
+                binding.tvFavBar.setTypeface(null, Typeface.BOLD)
             }
         }
     }
