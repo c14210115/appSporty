@@ -52,10 +52,9 @@ class CoachListAdapter (
         holder.btnFavorite.setOnClickListener{
             onItemClickCallback.onItemClicked(position)
             Log.d("FAV", "masuk fav")
-
-
-
         }
+
+
         //Anton : Ini buat ke halaman detail
         holder.btnDetail.setOnClickListener{
             val coachData = coachList[position]
@@ -71,6 +70,7 @@ class CoachListAdapter (
                 putString("ig", coachData.instagram)
                 putString("wa", coachData.telp)
                 putString("lokasi", coachData.location)
+                putString("trained", coachData.trained)
             }
             val detailCoachFragment = fragment_detail_coach.newInstance("data1","data2")
             detailCoachFragment.arguments = bundle

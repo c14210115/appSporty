@@ -14,7 +14,6 @@ class LoginPage : AppCompatActivity() {
         val _edtEmailLopin = findViewById<EditText>(R.id.edtEmailLogin)
         val _edtPassLogin= findViewById<EditText>(R.id.edtPassLogin)
 
-
         val btnLogin = findViewById<Button>(R.id.btnLogin)
 
         //bikin if jika email sama passnya benar sesuai roomDB/firebase

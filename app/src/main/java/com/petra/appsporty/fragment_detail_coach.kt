@@ -53,6 +53,7 @@ class fragment_detail_coach : Fragment() {
         var tvCoachPrice = view.findViewById<TextView>(R.id.tvCoachprice)
         var tvRate = view.findViewById<TextView>(R.id.tvRateDetail)
         var tvNotes = view.findViewById<TextView>(R.id.tvDispNotes)
+        var tvTrained = view.findViewById<TextView>(R.id.tvTrained)
 
         val nama = arguments?.getString("nama")
         val gambar = arguments?.getString("gambar")
@@ -64,6 +65,7 @@ class fragment_detail_coach : Fragment() {
         val ig = arguments?.getString("ig")
         val wa = arguments?.getString("wa")
         val lokasi = arguments?.getString("lokasi")
+        val trained = arguments?.getString("trained")
 
         //membaca image
         val imageRes = context?.resources?.getIdentifier(
@@ -80,6 +82,7 @@ class fragment_detail_coach : Fragment() {
         tvCoachPrice.text = harga
         tvRate.text = rate
         tvNotes.text = note
+        tvTrained.text = trained
 
         btnOrder.setOnClickListener {
             // Buat instance fragment pemesanan coach

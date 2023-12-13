@@ -20,7 +20,6 @@ class SignUpPage : AppCompatActivity() {
         val _edtPassSign = findViewById<EditText>(R.id.edtPassSign)
         val _edtConfirmPassSign = findViewById<EditText>(R.id.edtConfirmPassSign)
 
-
         val btnSign = findViewById<Button>(R.id.btnSignup)
         btnSign.setOnClickListener{
             // cek passwrodnya sama atau tidak
