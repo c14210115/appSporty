@@ -11,5 +11,6 @@ data class User(
     val userTelp: String,
     val userEmail: String,
     val usercategory: String,
-    val userNotes: String
+    val userNotes: String,
+    val userPw : String // very not safe
 ): Parcelable

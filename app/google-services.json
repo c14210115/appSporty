@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "402872227642",
+    "project_id": "sporty-androidproject",
+    "storage_bucket": "sporty-androidproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402872227642:android:e294d6988d114d3be56203",
+        "android_client_info": {
+          "package_name": "com.petra.appsporty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp__hwNFlzJqYxS0UQdMA9ZH8lOil-_SA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
