@@ -169,6 +169,7 @@ class fragment_detail_coach : Fragment() {
                             Log.e(TAG, "Error incrementing order counter", e)
                         }
                 } else {
+
                     //cek dokumen ada apa nda
                     countersRef.set(hashMapOf("value" to 1))
                         .addOnSuccessListener {
