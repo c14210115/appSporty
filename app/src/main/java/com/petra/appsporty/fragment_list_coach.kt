@@ -106,6 +106,7 @@ class fragment_list_coach : Fragment() {
     }
 
     private fun SiapkanData(){
+
         _nama = resources.getStringArray(R.array.namacoach).toMutableList()
         _foto = resources.getStringArray(R.array.fotocoach).toMutableList()
         _kategori = resources.getStringArray(R.array.kategoricoach).toMutableList()
