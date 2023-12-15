@@ -149,6 +149,7 @@ class fragment_list_coach : Fragment() {
     private fun TampilkanData() {
 //        _rvPahlawan.layoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
         _rvCoach.layoutManager = LinearLayoutManager(requireContext())
+
 //        _rvPahlawan.adapter = adapterPahlawan(arPahlawan)
 
         val adapterP = CoachListAdapter(coachList)

@@ -49,10 +49,10 @@ class CoachListAdapter (
         holder.bind(coach)
 
 
-        holder.btnFavorite.setOnClickListener{
-            onItemClickCallback.onItemClicked(position)
-            Log.d("FAV", "masuk fav")
-        }
+//        holder.btnFavorite.setOnClickListener{
+//            onItemClickCallback.onItemClicked(position)
+//            Log.d("FAV", "masuk fav")
+//        }
 
 
         //Anton : Ini buat ke halaman detail
