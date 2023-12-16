@@ -188,17 +188,14 @@ class fragment_detail_coach : Fragment() {
         if (!username.isNullOrEmpty()) {
             val instagramUri = Uri.parse("http:"+"//www.instagram.com/"+username)
             val intent = Intent(Intent.ACTION_VIEW, instagramUri)
-            if (intent.resolveActivity(requireActivity().packageManager) != null) {
                 try {
                     startActivity(intent)
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Toast.makeText(requireContext(), "Error opening Instagram", Toast.LENGTH_SHORT).show()
                 }
-            } else {
-                Toast.makeText(requireContext(), "No browser installed", Toast.LENGTH_SHORT).show()
             }
-        } else {
+        else {
             Toast.makeText(requireContext(), "Instagram username not available", Toast.LENGTH_SHORT).show()
         }
     }
@@ -206,17 +203,14 @@ class fragment_detail_coach : Fragment() {
         if (!phoneNumber.isNullOrEmpty()) {
             val whatsappUri = Uri.parse("http://api.whatsapp.com/send?phone=$phoneNumber")
             val intent = Intent(Intent.ACTION_VIEW, whatsappUri)
-            if (intent.resolveActivity(requireActivity().packageManager) != null) {
                 try {
                     startActivity(intent)
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Toast.makeText(requireContext(), "Error opening WhatsApp", Toast.LENGTH_SHORT).show()
                 }
-            } else {
-                Toast.makeText(requireContext(), "No WhatsApp app installed", Toast.LENGTH_SHORT).show()
             }
-        } else {
+         else {
             Toast.makeText(requireContext(), "WhatsApp phone number not available", Toast.LENGTH_SHORT).show()
         }
     }
