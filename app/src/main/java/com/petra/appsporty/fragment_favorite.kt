@@ -1,11 +1,14 @@
 package com.petra.appsporty
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
@@ -29,6 +32,9 @@ class fragment_favorite : Fragment() {
     // untuk array dan firebase
     val dbFavorties = Firebase.firestore
     private var favList = arrayListOf<Coach>()
+
+    var username: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +81,7 @@ class fragment_favorite : Fragment() {
             }
     }
     fun getFavFromFirebase() {
-        var username: String? = ""
+        favList.clear()
         if (activity is MainActivity) {
             val mainActivity = (activity as MainActivity?)
             username = mainActivity?.getMyUsername()
@@ -103,8 +109,10 @@ class fragment_favorite : Fragment() {
                         document.data["facility"].toString(),
                         document.data["time"].toString()
                     )
+
                 if(data.isfav == "True") {
                     favList.add(data)
+
                 }
             }
             TampilkanData()
@@ -114,6 +122,53 @@ class fragment_favorite : Fragment() {
         _rvFav.layoutManager = LinearLayoutManager(requireContext())
         val adapterP = CoachListAdapter(favList)
         _rvFav.adapter = adapterP
+        adapterP.setOnItemClickCallback(object : CoachListAdapter.OnItemClickCallback {
+            override fun onItemClicked(pos: Int) {
+                TODO("Not yet implemented")
+            }
+
+            override fun favorites(pos: Int, data: Coach) {
+                if (activity is MainActivity) {
+                    val mainActivity = (activity as MainActivity?)
+                    username = mainActivity?.getMyUsername()
+                    Log.d("username", "${username}")
+                }
+                //menghapus data favorites dengan alert diaglog
+                AlertDialog.Builder(requireContext()).setTitle("REMOVE FROM FAVORITES")
+                    .setMessage("Do you want to remove "+ data.name + " from favorites")
+                    .setPositiveButton("DELETE", DialogInterface.OnClickListener { dialog, which ->
+                        //memastikan ulang jika dia sdh favorites
+                        if (data.isfav == "True"){
+                            //delete from firebase
+                            dbFavorties.collection("users").document(username.toString()).collection("tbFavorites")
+                                .document(data.id).delete()
+                            getFavFromFirebase()
+                            TampilkanData()
+                            //toast text
+                            Toast.makeText(
+                                requireContext(),
+                                "Deleted",
+                                Toast.LENGTH_SHORT).show()
+                        }
+
+                    })
+                    .setNegativeButton("CANCEL",
+                        DialogInterface.OnClickListener { dialog, which ->
+
+                            Toast.makeText(
+                                requireContext(),
+                                "Canceled",
+                                Toast.LENGTH_SHORT).show()
+                        }).show()
+
+                TampilkanData()
+            }
+
+            override fun delData(pos: Int) {
+                TODO("Not yet implemented")
+            }
+        })
     }
+
 
 }

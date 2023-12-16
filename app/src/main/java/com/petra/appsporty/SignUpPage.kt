@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -23,7 +24,14 @@ class SignUpPage : AppCompatActivity() {
         val _edtEmailSign = findViewById<EditText>(R.id.edtEmailSign)
         val _edtPassSign = findViewById<EditText>(R.id.edtPassSign)
         val _edtConfirmPassSign = findViewById<EditText>(R.id.edtConfirmPassSign)
+        val _signup = findViewById<TextView>(R.id.tvNotRegistered)
 
+        //jika sudah ada akun dan text ditekan
+        _signup.setOnClickListener{
+            val intent = Intent(this@SignUpPage, LoginPage::class.java)
+            startActivity(intent)
+            finish()
+        }
         val btnSign = findViewById<Button>(R.id.btnSignup)
         btnSign.setOnClickListener {
 

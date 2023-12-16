@@ -206,27 +206,6 @@ class fragment_list_coach : Fragment() {
                             requireContext(),
                     "Added to Favorites",
                     Toast.LENGTH_SHORT).show()
-
-//                    if(data.isfav=="False") {
-//                        //update favorite di database
-//                        dbCoach.collection("tbListCoach").document(data.id)
-//                            .update("isFav", "True")
-//
-//
-//                        Toast.makeText(
-//                            requireContext(),
-//                            "Added to Favorites",
-//                            Toast.LENGTH_SHORT).show()
-//
-//                    }else{
-//                        dbCoach.collection("tbListCoach").document(data.id)
-//                            .update("isFav", "False")
-//
-//                        Toast.makeText(
-//                            requireContext(),
-//                            "Removed from Favorites",
-//                            Toast.LENGTH_SHORT).show()
-//                    }
                 }
 
                 override fun delData(pos: Int) {

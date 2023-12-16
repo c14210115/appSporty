@@ -44,6 +44,7 @@ class CoachListAdapter (
     interface OnItemClickCallback {
 
         fun onItemClicked(pos: Int)
+        //fungsi favorit untuk menambah atau menghapus dari favorites
         fun favorites(pos: Int, data: Coach)
         fun delData(pos: Int)
     }
@@ -123,6 +124,7 @@ class CoachListAdapter (
             tvCoachPrice.text = coach.price.toString()
             tvCoachRating.text = coach.rating
 
+            //ini untuk mengubah drawable favorit
             if(coach.isfav == "True"){
                 Log.d("isFAV", "favorite")
                 btnFavorite.setImageResource(R.drawable.fullfav)

@@ -223,6 +223,7 @@
             android:id="@+id/tvNotRegistered"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:text="Already Have an Account? Login Here"
             android:textAlignment="center"
             android:textColor="#0017A9"
