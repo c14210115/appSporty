@@ -2,12 +2,15 @@ package com.petra.appsporty
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +26,7 @@ class fragment_profile : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var firestore: FirebaseFirestore
     private lateinit var textViewName: TextView
     private lateinit var textViewPhoneNumber: TextView
     private lateinit var textViewAge: TextView
@@ -45,7 +48,7 @@ class fragment_profile : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-
+        firestore = FirebaseFirestore.getInstance()
         textViewName = view.findViewById(R.id.textViewName)
         textViewPhoneNumber = view.findViewById(R.id.textViewPhoneNumber)
         textViewAge = view.findViewById(R.id.textViewAge)
@@ -72,12 +75,15 @@ class fragment_profile : Fragment() {
     }
     private fun displayProfileData() {
         //coba pake shrdprf
-        val sharedPrefs = requireActivity().getPreferences(android.content.Context.MODE_PRIVATE)
-        textViewName.text = "Nama: ${sharedPrefs.getString("name", "")}"
-        textViewPhoneNumber.text = "Nomor Telepon: ${sharedPrefs.getString("phoneNumber", "")}"
-        textViewAge.text = "Umur: ${sharedPrefs.getString("age", "")}"
-        textViewEmail.text = "Email: ${sharedPrefs.getString("email", "")}"
-        textViewExperience.text = "Pengalaman: ${sharedPrefs.getString("experience", "")}"
+//        val sharedPrefs = requireActivity().getPreferences(android.content.Context.MODE_PRIVATE)
+//        textViewName.text = "Nama: ${sharedPrefs.getString("name", "")}"
+//        textViewPhoneNumber.text = "Nomor Telepon: ${sharedPrefs.getString("phoneNumber", "")}"
+//        textViewAge.text = "Umur: ${sharedPrefs.getString("age", "")}"
+//        textViewEmail.text = "Email: ${sharedPrefs.getString("email", "")}"
+//        textViewExperience.text = "Pengalaman: ${sharedPrefs.getString("experience", "")}"
+
+
+
     }
     private fun navigateToEditProfile() {
         val fragmentManager = requireActivity().supportFragmentManager

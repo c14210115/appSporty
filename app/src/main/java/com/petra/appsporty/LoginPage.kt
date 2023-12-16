@@ -18,7 +18,7 @@ class LoginPage : AppCompatActivity() {
         setContentView(R.layout.activity_login_page)
         mAuth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
-        val _edtEmailLogin = findViewById<EditText>(R.id.edtEmailLogin)
+        val _edtNameLogin = findViewById<EditText>(R.id.edtEmailLogin)
         val _edtPassLogin = findViewById<EditText>(R.id.edtPassLogin)
         val _tvNotRegistered = findViewById<TextView>(R.id.tvNotRegistered)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
@@ -29,18 +29,18 @@ class LoginPage : AppCompatActivity() {
         }
         //bikin if jika email sama passnya benar sesuai roomDB/firebase
         btnLogin.setOnClickListener {
-            val email = _edtEmailLogin.text.toString().trim()
+            val name = _edtNameLogin.text.toString().trim()
             val password = _edtPassLogin.text.toString().trim()
 
             // Ambil dokumen pengguna berdasarkan email
             firestore.collection("users")
-                .whereEqualTo("name", email)
+                .whereEqualTo("userName", name)
                 .get()
                 .addOnSuccessListener { documents ->
                     if (!documents.isEmpty) {
                         // Dokumen ditemukan, periksa password
                         val userDoc = documents.documents[0]
-                        val storedPassword = userDoc.getString("password")
+                        val storedPassword = userDoc.getString("userPw")
 
                         // Bandingkan password
                         if (storedPassword == password) {

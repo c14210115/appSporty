@@ -3,7 +3,7 @@ package com.petra.appsporty
 import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-
+import java.util.Date
 
 
 data class Order(
@@ -18,7 +18,7 @@ data class Order(
 @Parcelize
 enum class StatusOrder(val nama : String,val status : Int) : Parcelable {
     //ngie nda jadi pake sedang di proses
-    //ONPROGRESS("Sedang Diproses",0),
+    ONPROGRESS("Sedang Diproses",0),
     DONE("Selesai",1),
     CANCELED("Dibatalkan",2);
 }

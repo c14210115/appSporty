@@ -31,16 +31,22 @@ class SignUpPage : AppCompatActivity() {
             val phone = _edtPhoneSign.text.toString().trim()
             val email = _edtEmailSign.text.toString().trim()
             val password = _edtPassSign.text.toString().trim()
-
+            val age: String? = null
+            val gender: String? = null
+            val category: String? = null
+            val notes: String? = null
             // Cek apakah password sama dengan konfirmasi password
             if (password == _edtConfirmPassSign.text.toString().trim()) {
                 // Menyimpan data ke Firestore
-                val user = hashMapOf(
-                    "name" to name,
-                    "phone" to phone,
-                    "email" to email,
-                    "password" to password
-                    // Tambahkan data lain jika diperlukan
+                val user = User(
+                    name,
+                    age.toString(),
+                    gender.toString(),
+                    phone,
+                    email,
+                    category.toString(),
+                    notes.toString(),
+                    password
                 )
 
                 // Mengakses collection "users" di Firestore
