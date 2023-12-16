@@ -55,7 +55,7 @@ class fragment_editProfile : Fragment() {
         editTextAge = view.findViewById(R.id.editTextAge)
         editTextEmail = view.findViewById(R.id.editTextEmail)
         editTextExperience = view.findViewById(R.id.editTextCategory)
-        editTextGender = view.findViewById(R.id.editTvGender)
+        editTextGender = view.findViewById(R.id.textViewGender)
         editTextCategory = view.findViewById(R.id.editTextCategory)
         editTextDescription = view.findViewById(R.id.editTvDescription)
 
@@ -78,24 +78,50 @@ class fragment_editProfile : Fragment() {
             Log.d("username", "${username}")
         }
 
-        dbProfile.collection("users").document(username.toString())
-            .get()
-            .addOnSuccessListener {document ->
-                // kalo suskses ambil coba cari update dimana
-                    // cek id nya sama maka ubah
-                    document.reference.update("userAge",editTextAge.text.toString())
-                    document.reference.update("userGender",editTextGender.text.toString())
-                    document.reference.update("userTelp",editTextPhoneNumber.text.toString())
-                    document.reference.update("userEmail",editTextEmail.text.toString())
-                    document.reference.update("usercategory",editTextCategory.text.toString())
-                    document.reference.update("userNotes",editTextDescription.text.toString())
-
-            }
-            .addOnFailureListener {
-
-            }
-
-
+        if (editTextAge.text.toString().isNotEmpty()) {
+            dbProfile.collection("users").document(username.toString())
+                .update("userAge", editTextAge.text.toString())
+        }
+        if (editTextGender.text.toString().isNotEmpty()) {
+            dbProfile.collection("users").document(username.toString())
+                .update("userGender", editTextGender.text.toString())
+        }
+        if (editTextPhoneNumber.text.toString().isNotEmpty()) {
+            dbProfile.collection("users").document(username.toString())
+                .update("userTelp", editTextPhoneNumber.text.toString())
+        }
+        if (editTextEmail.text.toString().isNotEmpty()) {
+            dbProfile.collection("users").document(username.toString())
+                .update("userEmail", editTextEmail.text.toString())
+        }
+        if (editTextCategory.toString().isNotEmpty()) {
+            dbProfile.collection("users").document(username.toString())
+                .update("usercategory", editTextCategory.text.toString())
+        }
+        if (editTextDescription.toString().isNotEmpty()) {
+            dbProfile.collection("users").document(username.toString())
+                .update("userNotes", editTextDescription.text.toString())
+        }
+//        dbProfile.collection("users").document(username.toString())
+//            .get()
+//            .addOnSuccessListener { document ->
+//                // kalo suskses ambil coba cari update dimana
+//                // cek id nya sama maka ubah
+//
+//                    document.reference.update("userAge", editTextAge.text.toString())
+//                    document.reference.update("userGender", editTextGender.text.toString())
+//                    document.reference.update("userTelp", editTextPhoneNumber.text.toString())
+//                    document.reference.update("userEmail", editTextEmail.text.toString())
+//                    document.reference.update("usercategory", editTextCategory.text.toString())
+//                    document.reference.update("userNotes", editTextDescription.text.toString())
+//
+//                }
+//                    .addOnFailureListener {
+//
+//
+//
+//
+//            }
     }
 
 //    private fun saveEditedData() {

@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 
@@ -57,7 +56,7 @@ class fragment_profile : Fragment() {
         textViewPhoneNumber = view.findViewById(R.id.textViewPhoneNumber)
         textViewAge = view.findViewById(R.id.textViewAge)
         textViewEmail = view.findViewById(R.id.textViewEmail)
-
+        textViewGender = view.findViewById(R.id.textViewGender)
         textViewExperience = view.findViewById(R.id.textViewCategory)
 
         buttonEdit = view.findViewById(R.id.buttonEdit)
@@ -112,7 +111,7 @@ class fragment_profile : Fragment() {
                 textViewAge.text = "Umur: ${user.userAge}"
                 textViewEmail.text = "Email: ${user.userEmail}"
                 textViewGender.text = "Gender: ${user.userGender}"
-                textViewExperience.text = "Pengalaman: ${user.usercategory}"
+                textViewExperience.text = "Category: ${user.usercategory}"
 
             }
             .addOnFailureListener { e ->
