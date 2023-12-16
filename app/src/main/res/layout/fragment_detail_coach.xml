@@ -13,10 +13,9 @@
         android:id="@+id/imgCoachDetail"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
         app:layout_constraintTop_toBottomOf="@+id/imageButton"
         tools:src="@tools:sample/avatars" />
 
@@ -70,9 +69,9 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/roundedcorner"
         android:backgroundTint="#28D5F3"
-        app:layout_constraintEnd_toEndOf="@+id/tvNama"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imgCoachDetail"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/imgCoachDetail">
 
         <ImageView
@@ -124,9 +123,9 @@
         android:id="@+id/constraintLayout"
         android:layout_width="378dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/roundedcorner"
         android:backgroundTint="#3E8BEA"
         app:layout_constraintEnd_toEndOf="parent"
@@ -181,10 +180,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:justificationMode="inter_word"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
-                app:layout_constraintTop_toBottomOf="@+id/textView14"
-                android:justificationMode="inter_word"/>
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -18,7 +18,7 @@ class LoginPage : AppCompatActivity() {
         setContentView(R.layout.activity_login_page)
         mAuth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
-        val _edtNameLogin = findViewById<EditText>(R.id.edtEmailLogin)
+        val _edtUsername = findViewById<EditText>(R.id.edtUsernameLogin)
         val _edtPassLogin = findViewById<EditText>(R.id.edtPassLogin)
         val _tvNotRegistered = findViewById<TextView>(R.id.tvNotRegistered)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
@@ -29,7 +29,7 @@ class LoginPage : AppCompatActivity() {
         }
         //bikin if jika email sama passnya benar sesuai roomDB/firebase
         btnLogin.setOnClickListener {
-            val name = _edtNameLogin.text.toString().trim()
+            val name = _edtUsername.text.toString().trim()
             val password = _edtPassLogin.text.toString().trim()
 
             // Ambil dokumen pengguna berdasarkan email
@@ -44,7 +44,16 @@ class LoginPage : AppCompatActivity() {
 
                         // Bandingkan password
                         if (storedPassword == password) {
+                            Toast.makeText(
+                                this@LoginPage,
+                                "Successful",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             // Jika password cocok, login berhasil
+                            //set ke data username global
+                            val main = MainActivity()
+                            main.setMyUsername(name)
+                            //intent ke mainactivity biasa
                             val intent = Intent(this@LoginPage, MainActivity::class.java)
                             startActivity(intent)
                             finish()

@@ -21,13 +21,13 @@ class CoachListAdapter (
     //untuk click
     private lateinit var onItemClickCallback : OnItemClickCallback
     private var filteredList : ArrayList<Coach> = ArrayList()
-    fun filterByCategory(category: String) {
-        Log.d("FILTER", "Category Filtered: $category")
+
+    fun filterByCategory(category: String){
         filteredList.clear()
 
-        if (category.isEmpty()) {
+        if(category.isEmpty()){
             filteredList.addAll(coachList)
-        } else {
+        }else{
             filteredList.addAll(coachList.filter { it.category.equals(category, ignoreCase = true) })
         }
         notifyDataSetChanged()
@@ -35,15 +35,17 @@ class CoachListAdapter (
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoachViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_coach, parent, false)
+
         return CoachViewHolder(view)
     }
+
+
 
     interface OnItemClickCallback {
 
         fun onItemClicked(pos: Int)
-        //        fun onItemClicked(data : Map<String, String>)
+        fun favorites(pos: Int, data: Coach)
         fun delData(pos: Int)
-
     }
 
     fun setOnItemClickCallback(onItemClickCallback : OnItemClickCallback){
@@ -63,12 +65,11 @@ class CoachListAdapter (
 
 
         holder.btnFavorite.setOnClickListener{
-            onItemClickCallback.onItemClicked(position)
+            onItemClickCallback.favorites(position, coach)
             Log.d("FAV", "masuk fav")
-
-
-
         }
+
+
         //Anton : Ini buat ke halaman detail
         holder.btnDetail.setOnClickListener{
             val coachData = coachList[position]
@@ -84,6 +85,7 @@ class CoachListAdapter (
                 putString("ig", coachData.instagram)
                 putString("wa", coachData.telp)
                 putString("lokasi", coachData.location)
+                putString("trained", coachData.trained)
             }
             val detailCoachFragment = fragment_detail_coach.newInstance("data1","data2")
             detailCoachFragment.arguments = bundle
@@ -129,8 +131,6 @@ class CoachListAdapter (
                 btnFavorite.setImageResource(R.drawable.borderfav)
 
             }
-
-
         }
     }
 }

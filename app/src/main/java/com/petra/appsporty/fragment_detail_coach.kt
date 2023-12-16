@@ -102,7 +102,7 @@ class fragment_detail_coach : Fragment() {
         tvCoachPrice.text = harga
         tvRate.text = rate
         tvNotes.text = note
-        tvTrained.text = trained
+        tvTrained.text = "${trained} Trained"
 
 //        btnOrder.setOnClickListener {
 //            // Buat instance fragment pemesanan coach

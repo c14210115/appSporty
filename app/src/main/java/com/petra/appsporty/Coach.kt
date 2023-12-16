@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Coach(
+    val id: String,
     val photo: String,
     val name: String,
     val category: String,
@@ -17,7 +18,7 @@ data class Coach(
     val notes: String,
     val telp: String,
     val instagram: String,
-    val lapangan: String,
+    val facility: String,
     val time: String,
 //    var isFavorite: Boolean = false
 ) : Parcelable

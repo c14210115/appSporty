@@ -2,6 +2,7 @@ package com.petra.appsporty
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,11 +47,15 @@ class fragment_list_coach : Fragment() {
     private lateinit var coachListAdapter: CoachListAdapter
     private var filteredList : ArrayList<Coach> = ArrayList()
     private lateinit var adapterP: CoachListAdapter
+
+    val dbUser = Firebase.firestore
+
 //    private var btnSearchFilter = findViewById<Button>(R.id.btnApplyFilters)
 //    private var inputFilter = view.findViewById<EditText>(R.id.etFilterName)
 
 
     //data"coach
+    private var _id: MutableList<String> = emptyList<String>().toMutableList()
     private var _nama: MutableList<String> = emptyList<String>().toMutableList()
     private var _foto: MutableList<String> = emptyList<String>().toMutableList()
     private var _kategori: MutableList<String> = emptyList<String>().toMutableList()
@@ -56,7 +63,6 @@ class fragment_list_coach : Fragment() {
     private var _harga: MutableList<String> = emptyList<String>().toMutableList()
     private var _umur: MutableList<String> = emptyList<String>().toMutableList()
     private var _rating: MutableList<String> = emptyList<String>().toMutableList()
-
     private var _trained: MutableList<String> = emptyList<String>().toMutableList()
     private var _lapangan: MutableList<String> = emptyList<String>().toMutableList()
     private var _jam: MutableList<String> = emptyList<String>().toMutableList()
@@ -97,7 +103,6 @@ class fragment_list_coach : Fragment() {
         var btnDetail = view.findViewById<Button>(R.id.btnInfo)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -109,9 +114,8 @@ class fragment_list_coach : Fragment() {
         return view
     }
 
-
     private fun SiapkanData(){
-
+        _id = resources.getStringArray(R.array.idcoach).toMutableList()
         _nama = resources.getStringArray(R.array.namacoach).toMutableList()
         _foto = resources.getStringArray(R.array.fotocoach).toMutableList()
         _kategori = resources.getStringArray(R.array.kategoricoach).toMutableList()
@@ -134,6 +138,7 @@ class fragment_list_coach : Fragment() {
     private fun TambahData() {
         for (position in _nama.indices) {
             val data = Coach(
+                _id[position],
                 _foto[position],
                 _nama[position],
                 _kategori[position],
@@ -152,7 +157,6 @@ class fragment_list_coach : Fragment() {
             coachList.add(data)
         }
     }
-
     private fun TampilkanData() {
 //        _rvPahlawan.layoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
 
@@ -163,37 +167,66 @@ class fragment_list_coach : Fragment() {
 
             adapterP.setOnItemClickCallback(object : CoachListAdapter.OnItemClickCallback {
 
-                //            override fun detData(pos: Int) {
-//                AlertDialog.Builder(requireContext())
-//                    .setTitle("DETAIL")
-//                    .setMessage("Nama: "+ _namaKontak[pos]+ " \n" + "Nomor Telp: " + _notelpKontak[pos]
-//                            + "\n"+ "Alamat: " + _alamatKontak[pos])
-//                    //Untuk hapus, disini pake positve hehe, sebenrnya bisa di negative
-//                    .setPositiveButton("HAPUS", DialogInterface.OnClickListener { dialog, which ->
+                override fun onItemClicked(pos: Int) {
+
+                }
+
+                override fun favorites(pos: Int, data: Coach) {
+                    //ambil username yang login
+                    var username: String? = null
+                    if (activity is MainActivity) {
+                        val mainActivity = (activity as MainActivity?)
+                        username = mainActivity?.getMyUsername()
+                        Log.d("username", "${username}")
+                    }
+
+                    //buat hasmap, dimana favoritenya jadi true
+                    val coachMap = hashMapOf(
+                        "id" to data.id,
+                        "photo" to  data.photo,
+                        "name" to data.name,
+                        "category" to data.category,
+                        "location" to data.location,
+                        "age" to data.age,
+                        "price" to data.price,
+                        "isFav" to "True",
+                        "rating" to  data.rating,
+                        "trained" to data.trained,
+                        "notes" to data.notes,
+                        "telp" to data.telp,
+                        "instagram" to data.instagram,
+                        "facility" to data.facility,
+                        "time" to data.time,
+                    )
+                    dbUser.collection("users").document(username.toString())
+                        .collection("tbFavorites").document(data.id).set(coachMap)
+
+
+                    Toast.makeText(
+                            requireContext(),
+                    "Added to Favorites",
+                    Toast.LENGTH_SHORT).show()
+
+//                    if(data.isfav=="False") {
+//                        //update favorite di database
+//                        dbCoach.collection("tbListCoach").document(data.id)
+//                            .update("isFav", "True")
+//
+//
 //                        Toast.makeText(
 //                            requireContext(),
-//                            "DATA BERHASIL DIHAPUS",
+//                            "Added to Favorites",
 //                            Toast.LENGTH_SHORT).show()
-//                        _namaKontak.removeAt(pos)
-//                        _alamatKontak.removeAt(pos)
-//                        _notelpKontak.removeAt(pos)
-//                        _fotoKontak.removeAt(pos)
-//                        arrData.clear()
-//                        TambahData()
-//                        TampilkanData()
-//                    })
 //
-//                    //untuk tutup
-//                    .setNegativeButton("CLOSE",
-//                        DialogInterface.OnClickListener { dialog, which ->
+//                    }else{
+//                        dbCoach.collection("tbListCoach").document(data.id)
+//                            .update("isFav", "False")
 //
-//                        }).show()
-//            }
-                override fun onItemClicked(pos: Int) {
-                    _favorit[pos] = "True"
-                    coachList.clear()
-                    TambahData()
-                    TampilkanData()
+//                        Toast.makeText(
+//                            requireContext(),
+//                            "Removed from Favorites",
+//                            Toast.LENGTH_SHORT).show()
+//                    }
                 }
 
                 override fun delData(pos: Int) {

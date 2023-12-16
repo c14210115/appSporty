@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">appSporty</string>
 
+    <string-array name="idcoach">
+        <item>c1</item>
+        <item>c2</item>
+        <item>c3</item>
+        <item>c4</item>
+        <item>c5</item>
+        <item>c6</item>
+    </string-array>
+
     <string-array name="namacoach">
         <item>Virganata Santoso</item>
         <item>Sony Dwi Kuncoro</item>
@@ -75,12 +84,12 @@
     </string-array>
 
     <string-array name="trainedcoach">
-        <item>59 Trained</item>
-        <item>34 Trained</item>
-        <item>50 Trained</item>
-        <item>60 Trained</item>
-        <item>23 Trained</item>
-        <item>8 Trained</item>
+        <item>59</item>
+        <item>34</item>
+        <item>50</item>
+        <item>60</item>
+        <item>23</item>
+        <item>8</item>
     </string-array>
 
     <string-array name="notescoach">

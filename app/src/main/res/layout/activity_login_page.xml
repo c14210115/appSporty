@@ -47,14 +47,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/edtEmailLogin"
+                android:id="@+id/edtUsernameLogin"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/roundedcorner"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="Username"
                 android:inputType="text|textEmailAddress"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

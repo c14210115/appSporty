@@ -11,6 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.petra.appsporty.databinding.ActivityMainBinding
 
+//data global untuk menyimpan username yang login
+private var usernameGlobal: String? = null
+
+
 class MainActivity : AppCompatActivity() {
     private lateinit var fragmentManager : FragmentManager
     private lateinit var binding : ActivityMainBinding
@@ -102,5 +106,13 @@ class MainActivity : AppCompatActivity() {
                 binding.tvFavBar.setTypeface(null, Typeface.NORMAL)
             }
         }
+    }
+    fun getMyUsername(): String? {
+        return usernameGlobal
+    }
+
+    // Custom setter method
+    fun setMyUsername(username: String) {
+        usernameGlobal = username
     }
 }
