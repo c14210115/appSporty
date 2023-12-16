@@ -25,11 +25,28 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class fragment_list_coach : Fragment() {
+    companion object {
+        private var coachList = arrayListOf<Coach>()
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            fragment_list_coach().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var coachListAdapter: CoachListAdapter
-    private var coachList = arrayListOf<Coach>()
+    private var filteredList : ArrayList<Coach> = ArrayList()
+    private lateinit var adapterP: CoachListAdapter
+//    private var btnSearchFilter = findViewById<Button>(R.id.btnApplyFilters)
+//    private var inputFilter = view.findViewById<EditText>(R.id.etFilterName)
+
 
     //data"coach
     private var _nama: MutableList<String> = emptyList<String>().toMutableList()
@@ -65,9 +82,19 @@ class fragment_list_coach : Fragment() {
         SiapkanData()
         TambahData()
         TampilkanData()
+        val etFilterName: EditText = view.findViewById(R.id.etFilterName)
+        val btnApplyFilters: ImageButton = view.findViewById(R.id.btnApplyFilters)
 
+        btnApplyFilters.setOnClickListener {
+            adapterP = CoachListAdapter(filteredList)
+            _rvCoach.adapter = adapterP
+            val categoryFilter = etFilterName.text.toString()
+            adapterP.filterByCategory(categoryFilter)
+            filteredList.clear()
+            filteredList.addAll(coachList.filter { it.category.equals(categoryFilter, ignoreCase = true) })
+            adapterP.notifyDataSetChanged() // Gunakan adapterP untuk filter
+        }
         var btnDetail = view.findViewById<Button>(R.id.btnInfo)
-
     }
 
 
@@ -78,32 +105,10 @@ class fragment_list_coach : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_list_coach, container, false)
         val rvCoachList: RecyclerView = view.findViewById(R.id.rvCoachList)
-        val etFilterName: EditText = view.findViewById(R.id.etFilterName)
-        val btnApplyFilters: ImageButton = view.findViewById(R.id.btnApplyFilters)
 
         return view
     }
 
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_list_coach.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_list_coach().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 
     private fun SiapkanData(){
 
@@ -112,7 +117,7 @@ class fragment_list_coach : Fragment() {
         _kategori = resources.getStringArray(R.array.kategoricoach).toMutableList()
         _lokasi = resources.getStringArray(R.array.lokasicoach).toMutableList()
         _umur = resources.getStringArray(R.array.umurcoach).toMutableList()
-//        //knp eror ya anjg
+
         _favorit = resources.getStringArray(R.array.favcoach).toMutableList()
         _harga = resources.getStringArray(R.array.hargacoach).toMutableList()
         _rating = resources.getStringArray(R.array.ratingcoach).toMutableList()
@@ -124,6 +129,7 @@ class fragment_list_coach : Fragment() {
         _telp= resources.getStringArray(R.array.telpcoach).toMutableList()
         _instagram= resources.getStringArray(R.array.instagramcoach).toMutableList()
     }
+
 
     private fun TambahData() {
         for (position in _nama.indices) {
@@ -149,16 +155,15 @@ class fragment_list_coach : Fragment() {
 
     private fun TampilkanData() {
 //        _rvPahlawan.layoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
-        _rvCoach.layoutManager = LinearLayoutManager(requireContext())
 
-//        _rvPahlawan.adapter = adapterPahlawan(arPahlawan)
+            _rvCoach.layoutManager = LinearLayoutManager(requireContext())
 
-        val adapterP = CoachListAdapter(coachList)
-        _rvCoach.adapter = adapterP
+            val adapterP = CoachListAdapter(coachList)
+            _rvCoach.adapter = adapterP
 
-        adapterP.setOnItemClickCallback(object: CoachListAdapter.OnItemClickCallback {
+            adapterP.setOnItemClickCallback(object : CoachListAdapter.OnItemClickCallback {
 
-            //            override fun detData(pos: Int) {
+                //            override fun detData(pos: Int) {
 //                AlertDialog.Builder(requireContext())
 //                    .setTitle("DETAIL")
 //                    .setMessage("Nama: "+ _namaKontak[pos]+ " \n" + "Nomor Telp: " + _notelpKontak[pos]
@@ -184,17 +189,23 @@ class fragment_list_coach : Fragment() {
 //
 //                        }).show()
 //            }
-            override fun onItemClicked(pos: Int) {
-                _favorit[pos] = "True"
-                coachList.clear()
-                TambahData()
-                TampilkanData()
-            }
+                override fun onItemClicked(pos: Int) {
+                    _favorit[pos] = "True"
+                    coachList.clear()
+                    TambahData()
+                    TampilkanData()
+                }
 
-            override fun delData(pos: Int) {
-                TODO("Not yet implemented")
-            }
-        })
+                override fun delData(pos: Int) {
+                    TODO("Not yet implemented")
+                }
+            })
+
+
+//        btnSearchFilter.setOnClickListener {
+//            val categoryFilter = inputFilter.text.toString()
+//            adapterP.filterByCategory(categoryFilter)
+//        }
 
     }
 }

@@ -20,6 +20,19 @@ class CoachListAdapter (
 
     //untuk click
     private lateinit var onItemClickCallback : OnItemClickCallback
+    private var filteredList : ArrayList<Coach> = ArrayList()
+    fun filterByCategory(category: String) {
+        Log.d("FILTER", "Category Filtered: $category")
+        filteredList.clear()
+
+        if (category.isEmpty()) {
+            filteredList.addAll(coachList)
+        } else {
+            filteredList.addAll(coachList.filter { it.category.equals(category, ignoreCase = true) })
+        }
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoachViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_coach, parent, false)
         return CoachViewHolder(view)
@@ -49,12 +62,13 @@ class CoachListAdapter (
         holder.bind(coach)
 
 
-//        holder.btnFavorite.setOnClickListener{
-//            onItemClickCallback.onItemClicked(position)
-//            Log.d("FAV", "masuk fav")
-//        }
+        holder.btnFavorite.setOnClickListener{
+            onItemClickCallback.onItemClicked(position)
+            Log.d("FAV", "masuk fav")
 
 
+
+        }
         //Anton : Ini buat ke halaman detail
         holder.btnDetail.setOnClickListener{
             val coachData = coachList[position]
@@ -70,7 +84,6 @@ class CoachListAdapter (
                 putString("ig", coachData.instagram)
                 putString("wa", coachData.telp)
                 putString("lokasi", coachData.location)
-                putString("trained", coachData.trained)
             }
             val detailCoachFragment = fragment_detail_coach.newInstance("data1","data2")
             detailCoachFragment.arguments = bundle

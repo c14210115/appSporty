@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpPage : AppCompatActivity() {
+    private lateinit var firestore: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_page)
+        firestore = FirebaseFirestore.getInstance()
 
         //foto detault anton dulu ya wkwkw
 
@@ -21,19 +25,43 @@ class SignUpPage : AppCompatActivity() {
         val _edtConfirmPassSign = findViewById<EditText>(R.id.edtConfirmPassSign)
 
         val btnSign = findViewById<Button>(R.id.btnSignup)
-        btnSign.setOnClickListener{
-            // cek passwrodnya sama atau tidak
-            if(_edtPassSign.text == _edtConfirmPassSign.text){
+        btnSign.setOnClickListener {
 
-                //simpan di roomDB/firebase
-                val intentWithData = Intent(this@SignUpPage,MainActivity::class.java)
-                startActivity(intentWithData)
-            } else{
-                Toast.makeText(
-                    this@SignUpPage,
-                    "PASSWORD NOT MATCH",
-                    Toast.LENGTH_SHORT).show()
+            val name = _edtNameSign.text.toString().trim()
+            val phone = _edtPhoneSign.text.toString().trim()
+            val email = _edtEmailSign.text.toString().trim()
+            val password = _edtPassSign.text.toString().trim()
+
+            // Cek apakah password sama dengan konfirmasi password
+            if (password == _edtConfirmPassSign.text.toString().trim()) {
+                // Menyimpan data ke Firestore
+                val user = hashMapOf(
+                    "name" to name,
+                    "phone" to phone,
+                    "email" to email,
+                    "password" to password
+                    // Tambahkan data lain jika diperlukan
+                )
+
+                // Mengakses collection "users" di Firestore
+                firestore.collection("users")
+                    .document(name) // Gunakan email sebagai ID dokumen
+                    .set(user)
+                    .addOnSuccessListener {
+                        Toast.makeText(this@SignUpPage, "Sign up successful", Toast.LENGTH_SHORT).show()
+                        // Redirect ke halaman login
+                        val intent = Intent(this@SignUpPage, LoginPage::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this@SignUpPage, "Error: $e", Toast.LENGTH_SHORT).show()
+                    }
+            } else {
+                Toast.makeText(this@SignUpPage, "Password doesn't match", Toast.LENGTH_SHORT).show()
             }
         }
     }
 }
+
+

@@ -16,7 +16,7 @@ class splash : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) { }
 
             override fun onFinish() {
-                val intent = Intent(this@splash, MainActivity::class.java)
+                val intent = Intent(this@splash, LoginPage::class.java)
                 startActivity(intent)
                 finish()
             }
