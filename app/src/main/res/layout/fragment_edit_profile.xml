@@ -97,7 +97,7 @@
                 android:layout_height="3dp" />
 
             <EditText
-                android:id="@+id/textViewGender"
+                android:id="@+id/editTvGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Your Gender"
@@ -195,7 +195,7 @@
                 android:layout_height="3dp" />
 
             <EditText
-                android:id="@+id/textViewDescription"
+                android:id="@+id/editTvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Your Description"

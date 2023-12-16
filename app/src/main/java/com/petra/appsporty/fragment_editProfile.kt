@@ -1,12 +1,15 @@
 package com.petra.appsporty
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,8 +30,11 @@ class fragment_editProfile : Fragment() {
     private lateinit var editTextAge: EditText
     private lateinit var editTextEmail: EditText
     private lateinit var editTextExperience: EditText
+    private lateinit var editTextGender: EditText
+    private lateinit var editTextCategory: EditText
+    private lateinit var editTextDescription: EditText
     private lateinit var buttonSave: Button
-
+    val dbProfile = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,38 +55,61 @@ class fragment_editProfile : Fragment() {
         editTextAge = view.findViewById(R.id.editTextAge)
         editTextEmail = view.findViewById(R.id.editTextEmail)
         editTextExperience = view.findViewById(R.id.editTextCategory)
+        editTextGender = view.findViewById(R.id.editTvGender)
+        editTextCategory = view.findViewById(R.id.editTextCategory)
+        editTextDescription = view.findViewById(R.id.editTvDescription)
+
         buttonSave = view.findViewById(R.id.buttonSave)
 
         // Menyimpan perubahan ketika tombol Simpan diklik
         buttonSave.setOnClickListener {
-            saveEditedData()
+            displayProfileData()
             navigateBackToProfile()
         }
         return view
 
     }
     private fun displayProfileData() {
-        //coba" aku liat d yt ktny pake ini bgs buat profile
-        val sharedPrefs = requireActivity().getPreferences(android.content.Context.MODE_PRIVATE)
-        editTextName.setText(sharedPrefs.getString("name", ""))
-        editTextPhoneNumber.setText(sharedPrefs.getString("phoneNumber", ""))
-        editTextAge.setText(sharedPrefs.getString("age", ""))
-        editTextEmail.setText(sharedPrefs.getString("email", ""))
-        editTextExperience.setText(sharedPrefs.getString("experience", ""))
+
+        var username: String? = ""
+        if (activity is MainActivity) {
+            val mainActivity = (activity as MainActivity?)
+            username = mainActivity?.getMyUsername()
+            Log.d("username", "${username}")
+        }
+
+        dbProfile.collection("users").document(username.toString())
+            .get()
+            .addOnSuccessListener {document ->
+                // kalo suskses ambil coba cari update dimana
+                    // cek id nya sama maka ubah
+                    document.reference.update("userAge",editTextAge.text.toString())
+                    document.reference.update("userGender",editTextGender.text.toString())
+                    document.reference.update("userTelp",editTextPhoneNumber.text.toString())
+                    document.reference.update("userEmail",editTextEmail.text.toString())
+                    document.reference.update("usercategory",editTextCategory.text.toString())
+                    document.reference.update("userNotes",editTextDescription.text.toString())
+
+            }
+            .addOnFailureListener {
+
+            }
+
+
     }
 
-    private fun saveEditedData() {
-        val sharedPrefs = requireActivity().getPreferences(android.content.Context.MODE_PRIVATE)
-        val editor = sharedPrefs.edit()
-
-        editor.putString("name", editTextName.text.toString())
-        editor.putString("phoneNumber", editTextPhoneNumber.text.toString())
-        editor.putString("age", editTextAge.text.toString())
-        editor.putString("email", editTextEmail.text.toString())
-        editor.putString("experience", editTextExperience.text.toString())
-
-        editor.apply()
-    }
+//    private fun saveEditedData() {
+//        val sharedPrefs = requireActivity().getPreferences(android.content.Context.MODE_PRIVATE)
+//        val editor = sharedPrefs.edit()
+//
+//        editor.putString("name", editTextName.text.toString())
+//        editor.putString("phoneNumber", editTextPhoneNumber.text.toString())
+//        editor.putString("age", editTextAge.text.toString())
+//        editor.putString("email", editTextEmail.text.toString())
+//        editor.putString("experience", editTextExperience.text.toString())
+//
+//        editor.apply()
+//    }
 
     private fun navigateBackToProfile() {
         //balik ke halaman sblme

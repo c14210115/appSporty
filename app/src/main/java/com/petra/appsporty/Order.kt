@@ -8,7 +8,7 @@ import java.util.Date
 
 data class Order(
     val username: String, // tinggal cari punya siapa di database
-    val namaCoach : String, // tinggal cari di database
+    val idCoach : String, // tinggal cari di database
     val jamDipesan : String,
     val tanggalDipesan: String,
     val waktuPesan : String,
@@ -17,7 +17,7 @@ data class Order(
 
 @Parcelize
 enum class StatusOrder(val nama : String,val status : Int) : Parcelable {
-    //ngie nda jadi pake sedang di proses
+
     ONPROGRESS("Sedang Diproses",0),
     DONE("Selesai",1),
     CANCELED("Dibatalkan",2);

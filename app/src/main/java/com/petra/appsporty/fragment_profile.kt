@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,9 +34,11 @@ class fragment_profile : Fragment() {
     private lateinit var textViewAge: TextView
     private lateinit var textViewEmail: TextView
     private lateinit var textViewExperience: TextView
+    private lateinit var textViewGender: TextView
+
     private lateinit var buttonEdit: Button
     private lateinit var buttonLogout: Button
-
+    val dbProfile = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -53,7 +57,9 @@ class fragment_profile : Fragment() {
         textViewPhoneNumber = view.findViewById(R.id.textViewPhoneNumber)
         textViewAge = view.findViewById(R.id.textViewAge)
         textViewEmail = view.findViewById(R.id.textViewEmail)
+
         textViewExperience = view.findViewById(R.id.textViewCategory)
+
         buttonEdit = view.findViewById(R.id.buttonEdit)
 
 
@@ -81,10 +87,42 @@ class fragment_profile : Fragment() {
 //        textViewAge.text = "Umur: ${sharedPrefs.getString("age", "")}"
 //        textViewEmail.text = "Email: ${sharedPrefs.getString("email", "")}"
 //        textViewExperience.text = "Pengalaman: ${sharedPrefs.getString("experience", "")}"
+        var username: String? = ""
+        if (activity is MainActivity) {
+            val mainActivity = (activity as MainActivity?)
+            username = mainActivity?.getMyUsername()
+            Log.d("username", "${username}")
+        }
 
+        dbProfile.collection("users").document(username.toString())
+            .get().addOnSuccessListener {document ->
+                val user = User(
+                    document.data!!.get("userName").toString(),
+                    document.data!!.get("userAge").toString(),
+                    document.data!!.get("userGender").toString(),
+                    document.data!!.get("userTelp").toString(),
+                    document.data!!.get("userEmail").toString(),
+                    document.data!!.get("usercategory").toString(),
+                    document.data!!.get("userNotes").toString(),
+                    document.data!!.get("userPw").toString()
 
+                )
+                textViewName.text = "Nama: ${user.userName}"
+                textViewPhoneNumber.text = "Nomor Telepon: ${user.userTelp}"
+                textViewAge.text = "Umur: ${user.userAge}"
+                textViewEmail.text = "Email: ${user.userEmail}"
+                textViewGender.text = "Gender: ${user.userGender}"
+                textViewExperience.text = "Pengalaman: ${user.usercategory}"
 
+            }
+            .addOnFailureListener { e ->
+                Log.e("Firestore", "Error getting documents: ", e)
+            }
     }
+
+
+
+
     private fun navigateToEditProfile() {
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
