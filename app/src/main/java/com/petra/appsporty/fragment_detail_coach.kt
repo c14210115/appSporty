@@ -47,14 +47,14 @@ class fragment_detail_coach : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         val view = inflater.inflate(R.layout.fragment_detail_coach, container, false)
-        //val db = FirebaseFirestore.getInstance()
+
         var imageDetail = view.findViewById<ImageView>(R.id.imgCoachDetail)
         var tvNama = view.findViewById<TextView>(R.id.tvNama)
         var tvCabor = view.findViewById<TextView>(R.id.tvCabor)
         var tvLokasi = view.findViewById<TextView>(R.id.tvLokasi)
-        var tvUmur = view.findViewById<TextView>(R.id.tvLokasi)
+        var tvUmur = view.findViewById<TextView>(R.id.tvUmur)
         var tvInstagram = view.findViewById<TextView>(R.id.tvIg)
         var tvWA = view.findViewById<TextView>(R.id.tvWA)
         var btnOrder = view.findViewById<Button>(R.id.btnOrder)
@@ -64,6 +64,7 @@ class fragment_detail_coach : Fragment() {
         var tvTrained = view.findViewById<TextView>(R.id.tvTrained)
         var btnBackToList = view.findViewById<ImageButton>(R.id.btnBackList)
 
+        val idCoach = arguments?.getString("id")
         val nama = arguments?.getString("nama")
         val gambar = arguments?.getString("gambar")
         val harga = arguments?.getString("harga")
@@ -75,7 +76,15 @@ class fragment_detail_coach : Fragment() {
         val wa = arguments?.getString("wa")
         val lokasi = arguments?.getString("lokasi")
         val trained = arguments?.getString("trained")
+        val facility = arguments?.getString("fasilitas")
+        val hour = arguments?.getString("jam")
+        val isFav =  arguments?.getString("isfav")
 
+        //masukan jadi 1 variabel untuk mempermudah
+        val coach = Coach(idCoach.toString(), gambar.toString(), nama.toString(),
+            cabor.toString(), lokasi.toString(), umur.toString(), harga.toString(), isFav.toString(),
+            rate.toString(), trained.toString(), note.toString(), wa.toString(), ig.toString(),
+            facility.toString(), hour.toString())
 
         val instagramUsername = arguments?.getString("ig")
         tvInstagram.setOnClickListener {
@@ -92,59 +101,55 @@ class fragment_detail_coach : Fragment() {
             gambar, "drawable", context?.packageName
         )
         imageDetail.setImageResource(imageRes!!)
-        imageDetail.scaleType
-        tvNama.text = nama
-        tvCabor.text = cabor
-        tvLokasi.text = lokasi
-        tvUmur.text = umur
-        tvInstagram.text = ig
-        tvWA.text = wa
-        tvCoachPrice.text = harga
-        tvRate.text = rate
-        tvNotes.text = note
-        tvTrained.text = "${trained} Trained"
+        tvNama.text = coach.name
+        tvCabor.text = coach.category
+        tvLokasi.text = coach.location
+        tvUmur.text = coach.age
+        tvInstagram.text = coach.instagram
+        tvWA.text = coach.telp
+        tvCoachPrice.text = coach.price
+        tvRate.text = coach.rating
+        tvNotes.text = coach.notes
+        tvTrained.text = "${coach.trained} Trained"
+
+        btnOrder.setOnClickListener {
+            // Buat pindah ke detail coach
+            val intentWithData = Intent(requireContext(),OrderPage::class.java).apply {
+                putExtra(OrderPage.dataCoach, coach)
+            }
+            startActivity(intentWithData)
+        }
 
 //        btnOrder.setOnClickListener {
-//            // Buat instance fragment pemesanan coach
-//            val orderCoachFragment = fragment_pemesanan_coach.newInstance("data1", "data2")
+//            getNextOrderId { orderId ->
 //
-//            // Melakukan transaksi untuk pindah ke fragment pemesanan coach
-//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-//            transaction.replace(R.id.fragmentContainerView, orderCoachFragment)
-//            transaction.addToBackStack(null)
-//            transaction.commit()
+//                val orderDetails = hashMapOf(
+//                    "id" to orderId,
+//                    "nama" to nama,
+//                    "cabor" to cabor,
+//                    "lokasi" to lokasi,
+//                )
+//                //add database
+//                db.collection("coachOrders").document(orderId)
+//                    .set(orderDetails)
+//                    .addOnSuccessListener { documentReference ->
+//                        Toast.makeText(
+//                            requireContext(),
+//                            //cek database order id
+//                            "Order placed successfully with ID: $orderId",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//                    }
+//                    .addOnFailureListener { e ->
+//                        Toast.makeText(requireContext(), "Error placing order", Toast.LENGTH_SHORT).show()
+//                        Log.e(TAG, "Error adding document", e)
+//                    }
+//            }
 //        }
-        btnOrder.setOnClickListener {
-            getNextOrderId { orderId ->
-
-                val orderDetails = hashMapOf(
-                    "id" to orderId,
-                    "nama" to nama,
-                    "cabor" to cabor,
-                    "lokasi" to lokasi,
-                )
-                //add database
-                db.collection("coachOrders").document(orderId)
-                    .set(orderDetails)
-                    .addOnSuccessListener { documentReference ->
-                        Toast.makeText(
-                            requireContext(),
-                            //cek database order id
-                            "Order placed successfully with ID: $orderId",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Error placing order", Toast.LENGTH_SHORT).show()
-                        Log.e(TAG, "Error adding document", e)
-                    }
-            }
-        }
         btnBackToList.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
             fragmentManager.popBackStack()
         }
-
 
         return view
     }

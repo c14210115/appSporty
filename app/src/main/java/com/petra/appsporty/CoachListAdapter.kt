@@ -76,6 +76,7 @@ class CoachListAdapter (
             val coachData = coachList[position]
 
             val bundle = Bundle().apply {
+                putString("id", coachData.id)
                 putString("nama", coachData.name)
                 putString("gambar", coachData.photo)
                 putString("harga", coachData.price)
@@ -87,6 +88,9 @@ class CoachListAdapter (
                 putString("wa", coachData.telp)
                 putString("lokasi", coachData.location)
                 putString("trained", coachData.trained)
+                putString("fasilitas", coachData.facility)
+                putString("jam", coachData.time)
+                putString("isfav", coachData.isfav)
             }
             val detailCoachFragment = fragment_detail_coach.newInstance("data1","data2")
             detailCoachFragment.arguments = bundle

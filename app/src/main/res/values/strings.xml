@@ -120,12 +120,12 @@
     </string-array>
     <!--    ini kalau mau dibuat banyak tinggal dikasih pemisah, nanti dipisah contoh "|"-->
     <string-array name="lapangancoach">
-        <item>GOR Talenta</item>
-        <item>Sony Dwi Kuncoro Badminton Hall</item>
+        <item>GOR Talenta|GOR Sudirman</item>
+        <item>SDK Badminton Hall</item>
         <item>Stadion Malang</item>
-        <item>Sport Center Hall</item>
+        <item>Sport Center Hall|Puncak Hall</item>
         <item>Stadion Putra</item>
-        <item>FitHub</item>
+        <item>FitHub|Sport Center</item>
     </string-array>
     <!--    ini kalau mau dibuat banyak tinggal dikasih pemisah, nanti dipisah contoh "|"-->
     <string-array name="jamcoach">
