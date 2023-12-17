@@ -35,6 +35,8 @@ class fragment_profile : Fragment() {
     private lateinit var textViewExperience: TextView
     private lateinit var textViewGender: TextView
 
+    var username: String? = ""
+
     private lateinit var buttonEdit: Button
     private lateinit var buttonLogout: Button
     val dbProfile = Firebase.firestore
@@ -65,6 +67,12 @@ class fragment_profile : Fragment() {
         //coba logout
         buttonLogout = view.findViewById(R.id.btnLogout)
         buttonLogout.setOnClickListener{
+            //set username ke null
+            if (activity is MainActivity) {
+                val mainActivity = (activity as MainActivity?)
+               mainActivity?.setMyUsername("")
+            }
+
             val intentWithData = Intent(requireActivity(),LoginPage::class.java)
             startActivity(intentWithData)
         }

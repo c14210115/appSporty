@@ -8,7 +8,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
     <ImageView
         android:id="@+id/imgCoachDetail"
         android:layout_width="110dp"
@@ -16,7 +15,7 @@
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/btnBackList"
         tools:src="@tools:sample/avatars" />
 
     <TextView
@@ -262,7 +261,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnBackList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"

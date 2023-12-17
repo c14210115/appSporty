@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
-                android:background="#939393" />
+                android:background="#B9939393" />
 
             <Space
                 android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:id="@+id/textViewAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Umur"
+                android:text="your age"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
-                android:background="#939393" />
+                android:background="#B9939393" />
 
             <Space
                 android:layout_width="match_parent"
@@ -112,7 +112,7 @@
                 android:id="@+id/textViewGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Male"
+                android:text="your gender"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
-                android:background="#939393" />
+                android:background="#B9939393" />
 
             <Space
                 android:layout_width="match_parent"
@@ -150,7 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
-                android:background="#939393" />
+                android:background="#B9939393" />
 
             <Space
                 android:layout_width="match_parent"
@@ -180,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
-                android:background="#939393" />
+                android:background="#B9939393" />
 
             <Space
                 android:layout_width="match_parent"
@@ -202,7 +202,7 @@
                 android:id="@+id/textViewCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kategori"
+                android:text="your sports category"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -210,7 +210,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
-                android:background="#939393" />
+                android:background="#B9939393" />
 
             <Space
                 android:layout_width="match_parent"
@@ -232,7 +232,7 @@
                 android:id="@+id/editTvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="deskripsi"
+                android:text="your descriptions"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -240,7 +240,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="3dp"
-                android:background="#939393" />
+                android:background="#B9939393" />
 
             <Space
                 android:layout_width="match_parent"

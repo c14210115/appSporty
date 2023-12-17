@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
@@ -34,6 +35,7 @@ class fragment_editProfile : Fragment() {
     private lateinit var editTextCategory: EditText
     private lateinit var editTextDescription: EditText
     private lateinit var buttonSave: Button
+    private lateinit var btnback: ImageButton
     val dbProfile = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +60,7 @@ class fragment_editProfile : Fragment() {
         editTextGender = view.findViewById(R.id.textViewGender)
         editTextCategory = view.findViewById(R.id.editTextCategory)
         editTextDescription = view.findViewById(R.id.editTvDescription)
+        btnback = view.findViewById(R.id.btnBack)
 
         buttonSave = view.findViewById(R.id.buttonSave)
 
@@ -65,6 +68,10 @@ class fragment_editProfile : Fragment() {
         buttonSave.setOnClickListener {
             displayProfileData()
             navigateBackToProfile()
+        }
+        btnback.setOnClickListener{
+            val fragmentManager = requireActivity().supportFragmentManager
+            fragmentManager.popBackStack()
         }
         return view
 

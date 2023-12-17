@@ -62,7 +62,7 @@ class fragment_detail_coach : Fragment() {
         var tvRate = view.findViewById<TextView>(R.id.tvRateDetail)
         var tvNotes = view.findViewById<TextView>(R.id.tvDispNotes)
         var tvTrained = view.findViewById<TextView>(R.id.tvTrained)
-        var btnBackToList = view.findViewById<ImageButton>(R.id.imageButton)
+        var btnBackToList = view.findViewById<ImageButton>(R.id.btnBackList)
 
         val nama = arguments?.getString("nama")
         val gambar = arguments?.getString("gambar")
