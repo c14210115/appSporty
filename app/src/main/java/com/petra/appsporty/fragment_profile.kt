@@ -32,9 +32,9 @@ class fragment_profile : Fragment() {
     private lateinit var textViewPhoneNumber: TextView
     private lateinit var textViewAge: TextView
     private lateinit var textViewEmail: TextView
-    private lateinit var textViewExperience: TextView
+    private lateinit var textViewCategory: TextView
     private lateinit var textViewGender: TextView
-
+    private lateinit var textViewDescription: TextView
     var username: String? = ""
 
     private lateinit var buttonEdit: Button
@@ -59,8 +59,8 @@ class fragment_profile : Fragment() {
         textViewAge = view.findViewById(R.id.textViewAge)
         textViewEmail = view.findViewById(R.id.textViewEmail)
         textViewGender = view.findViewById(R.id.textViewGender)
-        textViewExperience = view.findViewById(R.id.textViewCategory)
-
+        textViewCategory = view.findViewById(R.id.textViewCategory)
+        textViewDescription = view.findViewById(R.id.textViewDescription)
         buttonEdit = view.findViewById(R.id.buttonEdit)
 
 
@@ -119,7 +119,8 @@ class fragment_profile : Fragment() {
                 textViewAge.text = "Umur: ${user.userAge}"
                 textViewEmail.text = "Email: ${user.userEmail}"
                 textViewGender.text = "Gender: ${user.userGender}"
-                textViewExperience.text = "Category: ${user.usercategory}"
+                textViewCategory.text = "Category: ${user.usercategory}"
+                textViewDescription.text = "Desc: ${user.userNotes}"
 
             }
             .addOnFailureListener { e ->

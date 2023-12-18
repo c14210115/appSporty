@@ -59,7 +59,7 @@ class fragment_editProfile : Fragment() {
         editTextExperience = view.findViewById(R.id.editTextCategory)
         editTextGender = view.findViewById(R.id.textViewGender)
         editTextCategory = view.findViewById(R.id.editTextCategory)
-        editTextDescription = view.findViewById(R.id.editTvDescription)
+        editTextDescription = view.findViewById(R.id.etEditDescription)
         btnback = view.findViewById(R.id.btnBack)
 
         buttonSave = view.findViewById(R.id.buttonSave)

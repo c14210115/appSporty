@@ -195,7 +195,7 @@
                 android:layout_height="3dp" />
 
             <EditText
-                android:id="@+id/editTvDescription"
+                android:id="@+id/etEditDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Your Description"

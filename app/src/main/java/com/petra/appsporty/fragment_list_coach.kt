@@ -98,7 +98,7 @@ class fragment_list_coach : Fragment() {
             adapterP.filterByCategory(categoryFilter)
             filteredList.clear()
             filteredList.addAll(coachList.filter { it.category.equals(categoryFilter, ignoreCase = true) })
-            adapterP.notifyDataSetChanged() // Gunakan adapterP untuk filter
+            adapterP.notifyDataSetChanged()
         }
         var btnDetail = view.findViewById<Button>(R.id.btnInfo)
     }

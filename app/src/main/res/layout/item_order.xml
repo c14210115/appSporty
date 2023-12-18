@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/roundedcorner"
+    android:backgroundTint="#3E8BEA"
+    >
+
+    <TextView
+        android:id="@+id/tvOrder_namaCoach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Virgianata"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDetailOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#0017A9"
+        android:text="Detail"
+        app:layout_constraintEnd_toEndOf="@+id/tvOrder_lapanganYangDiPesan"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrder_lapanganYangDiPesan" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:text="Total Harga:"
+        app:layout_constraintStart_toStartOf="@+id/tvOrder_namaCoach"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrder_namaCoach" />
+
+    <TextView
+        android:id="@+id/tvOrder_hargaOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp. 100000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="_____________________________________________________________"
+        android:textColor="#D6D3D3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDetailOrder" />
+
+    <TextView
+        android:id="@+id/tvOrder_jamPesanLapangan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="20dp"
+        android:text="17.00-19.00"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOrder_lapanganYangDiPesan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="Lapangan"
+        app:layout_constraintEnd_toEndOf="@+id/tvOrder_jamPesanLapangan"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrder_jamPesanLapangan" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

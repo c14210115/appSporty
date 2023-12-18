@@ -12,12 +12,12 @@ data class Order(
     val jamDipesan : String,
     val tanggalDipesan: String,
     val waktuPesan : String,
+    val totalHarga : Int,
     val status : StatusOrder
 )
 
 @Parcelize
 enum class StatusOrder(val nama : String,val status : Int) : Parcelable {
-
     ONPROGRESS("Sedang Diproses",0),
     DONE("Selesai",1),
     CANCELED("Dibatalkan",2);

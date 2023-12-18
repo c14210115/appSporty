@@ -229,7 +229,7 @@
                 android:layout_height="5dp" />
 
             <TextView
-                android:id="@+id/editTvDescription"
+                android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="your descriptions"

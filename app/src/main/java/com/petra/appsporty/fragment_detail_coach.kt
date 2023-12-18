@@ -219,6 +219,7 @@ class fragment_detail_coach : Fragment() {
             Toast.makeText(requireContext(), "WhatsApp phone number not available", Toast.LENGTH_SHORT).show()
         }
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

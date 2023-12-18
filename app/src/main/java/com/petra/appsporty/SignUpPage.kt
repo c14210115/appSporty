@@ -17,7 +17,6 @@ class SignUpPage : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
 
         //foto detault anton dulu ya wkwkw
-
         val _edtNameSign = findViewById<EditText>(R.id.edtNameSign)
         val _edtPhoneSign = findViewById<EditText>(R.id.edtPhoneSign)
         val _edtEmailSign = findViewById<EditText>(R.id.edtEmailSign)
@@ -58,11 +57,11 @@ class SignUpPage : AppCompatActivity() {
 
                 // Mengakses collection "users" di Firestore
                 firestore.collection("users")
-                    .document(name) // Gunakan email sebagai ID dokumen
+                    .document(name)
                     .set(user)
                     .addOnSuccessListener {
                         Toast.makeText(this@SignUpPage, "Sign up successful", Toast.LENGTH_SHORT).show()
-                        // Redirect ke halaman login
+                        // Buka Login Page
                         val intent = Intent(this@SignUpPage, LoginPage::class.java)
                         startActivity(intent)
                         finish()
