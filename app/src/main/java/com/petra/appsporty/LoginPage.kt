@@ -60,7 +60,7 @@ class LoginPage : AppCompatActivity() {
                             // Jika password tidak cocok
                             Toast.makeText(
                                 this@LoginPage,
-                                "Invalid email or password",
+                                "Invalid Username or Password",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }

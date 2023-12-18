@@ -136,6 +136,7 @@ class fragment_list_coach : Fragment() {
 
 
     private fun TambahData() {
+        coachList.clear()
         for (position in _nama.indices) {
             val data = Coach(
                 _id[position],
