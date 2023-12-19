@@ -1,5 +1,6 @@
 package com.petra.appsporty
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -9,7 +10,6 @@ import android.util.Log
 import android.view.Gravity.CENTER_HORIZONTAL
 import android.view.View.TEXT_ALIGNMENT_CENTER
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -20,10 +20,14 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import java.lang.Integer.parseInt
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 class OrderPage : AppCompatActivity() {
+    private lateinit var calendar: Calendar
+    private lateinit var _tvDate: TextView
+    private lateinit var today: Date
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_page)
@@ -33,7 +37,7 @@ class OrderPage : AppCompatActivity() {
 
         val _tvCoach = findViewById<TextView>(R.id.tvCoachOrder)
         val _tvPrice = findViewById<TextView>(R.id.tvPriceOrder)
-        val _edtDate = findViewById<EditText>(R.id.edtDateOrder)
+        _tvDate = findViewById(R.id.edtDateOrder)
         val _lnFacilities = findViewById<LinearLayout>(R.id.lnFacilities)
         val _lnHours = findViewById<LinearLayout>(R.id.lnHours)
         val _tvTotalPrice = findViewById<TextView>(R.id.tvTotalPriceOrder)
@@ -53,19 +57,19 @@ class OrderPage : AppCompatActivity() {
             onBackPressed()
         }
 
-        //date
-        val today = Date()
-
+        //DATE
+        calendar = Calendar.getInstance()
+        today = Date()
         // Membuat objek SimpleDateFormat
         val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-
         // Memformat tanggal menjadi string
         val formattedDate = dateFormat.format(today)
 
-        val date: Date? = dateFormat.parse(_edtDate.text.toString())
-        val formattedTrainedDate = dateFormat.format(_edtDate.text.toString())
-        Log.d("date1", "$formattedDate")
-//        Log.d("date2", "$formattedTrainedDate")
+        // jika edt ditekan maka menjalankan fungsi datepicker
+        _tvDate.setOnClickListener{
+
+            showDatePicker()
+        }
 
 
         //mengambil data dari fragment detail coach
@@ -200,57 +204,73 @@ class OrderPage : AppCompatActivity() {
         }
         //submit order
         _btnSubmit.setOnClickListener {
-            //cek date
-            if(_edtDate.text.toString() == "") {
-                //cek input lapangan dan jam
-                if (lapangan != null.toString() && simpanJam.isNotEmpty()) {
-                    val main = MainActivity()
-                    username = main.getMyUsername()
+            //cek input lapangan dan jam
+            if (lapangan != null.toString() && simpanJam.isNotEmpty()
+                && _tvDate.text.toString().isNotEmpty()) {
+                val main = MainActivity()
+                username = main.getMyUsername()
 
-                    //buat hasmap, dimana favoritenya jadi true
-//                    val orderMap = hashMapOf(
-//                        "id" to data.id,
-//                        "photo" to  data.photo,
-//                        "name" to data.name,
-//                        "category" to data.category,
-//                        "location" to data.location,
-//                        "age" to data.age,
-//                        "price" to data.price,
-//                        "isFav" to "True",
-//                        "rating" to  data.rating,
-//                        "trained" to data.trained,
-//                        "notes" to data.notes,
-//                        "telp" to data.telp,
-//                        "instagram" to data.instagram,
-//                        "facility" to data.facility,
-//                        "time" to data.time,
-//                    )
-//                    dbOrder.collection("users").document(username.toString())
-//                        .collection("tbOrder").document(orderId).set(orderMap)
+                dbOrder.collection("users").document(username.toString())
+                    .collection("tbOrder").get().
+                    addOnSuccessListener { documents ->
+                        val idOrder = documents.size()
+                        //buat hasmap ordernya
+                        val orderMap = hashMapOf(
+                            "idOrder" to  idOrder.toString(),
+                            "usernameOrder" to username,
+                            "idCoachOrder" to _dataCoach.id,
+                            "timeOrder" to simpanJam.toString(),
+                            "dateTrainingOrder" to _tvDate.text.toString(),
+                            "facilityOrder" to lapangan,
+                            "dateOrder" to formattedDate.toString(),
+                            "priceOrder" to totalPrice,
+                            "statusOrder" to StatusOrder.ONGOING.status,
+                        )
+                        //masukan ke database
+                        dbOrder.collection("users").document(username.toString())
+                            .collection("tbOrder").document(idOrder.toString()).set(orderMap)
+                    }
 
-                    Toast.makeText(
-                        this@OrderPage,
-                        "Order Submited",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                } else {
-                    Toast.makeText(
-                        this@OrderPage,
-                        "Facility or Trainning Hour is not Entered",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
                 Toast.makeText(
                     this@OrderPage,
-                    "Enter the Minimum Date Tommorrow",
+                    "Order Successful",
+                    Toast.LENGTH_LONG
+                ).show()
+
+            } else {
+                Toast.makeText(
+                    this@OrderPage,
+                    "Facility or Trainning Hour or Date is not Entered",
                     Toast.LENGTH_LONG
                 ).show()
             }
-
         }
     }
     companion object{
         val dataCoach= "getCoach"
+    }
+
+    private fun showDatePicker() {
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        // menggunakan alart dialog untuk memunculkan date dialog
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, selectedYear, selectedMonth, selectedDay ->
+                calendar.set(selectedYear, selectedMonth, selectedDay)
+                updateDateInView()
+            },
+            year, month, day
+        )
+        datePickerDialog.datePicker.minDate = calendar.timeInMillis
+        datePickerDialog.show()
+    }
+
+    private fun updateDateInView() {
+        val myFormat = "dd-MM-yyyy" // sama dengan format date di home
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        _tvDate.text = sdf.format(calendar.time)
     }
 }

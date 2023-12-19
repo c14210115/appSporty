@@ -27,20 +27,20 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="#0017A9"
         android:text="Detail"
-        app:layout_constraintEnd_toEndOf="@+id/tvOrder_lapanganYangDiPesan"
-        app:layout_constraintTop_toBottomOf="@+id/tvOrder_lapanganYangDiPesan" />
+        app:layout_constraintEnd_toEndOf="@+id/tvOrder_jamPesanLapangan"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrder_jamPesanLapangan" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="20dp"
         android:text="Total Harga:"
         app:layout_constraintStart_toStartOf="@+id/tvOrder_namaCoach"
-        app:layout_constraintTop_toBottomOf="@+id/tvOrder_namaCoach" />
+        app:layout_constraintTop_toBottomOf="@+id/tvOrder_lapanganYangDiPesan" />
 
     <TextView
-        android:id="@+id/tvOrder_hargaOrder"
+        android:id="@+id/tvOrder_totalHarga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rp. 100000"
@@ -63,20 +63,30 @@
         android:id="@+id/tvOrder_jamPesanLapangan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
         android:text="17.00-19.00"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStatus" />
 
     <TextView
         android:id="@+id/tvOrder_lapanganYangDiPesan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="10dp"
         android:text="Lapangan"
-        app:layout_constraintEnd_toEndOf="@+id/tvOrder_jamPesanLapangan"
-        app:layout_constraintTop_toBottomOf="@+id/tvOrder_jamPesanLapangan" />
+        app:layout_constraintStart_toStartOf="@+id/tvOrder_namaCoach"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrder_namaCoach" />
+
+    <Button
+        android:id="@+id/btnStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#B62C2C"
+        android:text="ONPROGRESS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvOrder_namaCoach" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

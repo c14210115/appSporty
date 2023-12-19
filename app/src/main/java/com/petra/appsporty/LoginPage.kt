@@ -48,6 +48,7 @@ class LoginPage : AppCompatActivity() {
                                 "Successful",
                                 Toast.LENGTH_SHORT
                             ).show()
+
                             // Jika password cocok, login berhasil
                             //set ke data username global
                             val main = MainActivity()

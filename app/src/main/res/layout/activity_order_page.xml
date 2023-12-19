@@ -50,12 +50,13 @@
                 app:layout_constraintStart_toStartOf="@+id/textView20"
                 app:layout_constraintTop_toBottomOf="@+id/view" />
 
-            <EditText
+            <TextView
                 android:id="@+id/edtDateOrder"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/roundedcornerbar"
+                android:contextClickable="true"
                 android:ems="10"
                 android:gravity="center"
                 android:hint="DD-MM-YYYY"

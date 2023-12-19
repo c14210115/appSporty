@@ -156,6 +156,27 @@ class fragment_list_coach : Fragment() {
                 _jam[position]
             )
             coachList.add(data)
+//masukan firebase untuk data coach
+//            val coachM = hashMapOf(
+//                "id" to data.id,
+//                "photo" to  data.photo,
+//                "name" to data.name,
+//                "category" to data.category,
+//                "location" to data.location,
+//                "age" to data.age,
+//                "price" to data.price,
+//                "isFav" to "True",
+//                "rating" to  data.rating,
+//                "trained" to data.trained,
+//                "notes" to data.notes,
+//                "telp" to data.telp,
+//                "instagram" to data.instagram,
+//                "facility" to data.facility,
+//                "time" to data.time,
+//            )
+//            dbUser.collection("tbListCoach").document(data.id).set(coachM)
+
+
         }
     }
     private fun TampilkanData() {
