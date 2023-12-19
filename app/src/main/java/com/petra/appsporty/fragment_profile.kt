@@ -137,8 +137,6 @@ class fragment_profile : Fragment() {
     }
 
 
-
-
     private fun navigateToEditProfile() {
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()

@@ -41,6 +41,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvOrder_tanggalDiPesan"
                 app:layout_constraintStart_toStartOf="@+id/tvOrder_tanggalDiPesan"
                 app:layout_constraintTop_toBottomOf="@+id/tvOrder_tanggalDiPesan" />
 
@@ -50,20 +51,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:text="Lapangan"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvOrder_tanggalDiPesan"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Tanggal"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tvOrder_lapanganYangDiPesan"
                 app:layout_constraintStart_toStartOf="@+id/tvOrder_lapanganYangDiPesan"
                 app:layout_constraintTop_toBottomOf="@+id/tvOrder_lapanganYangDiPesan" />
 
@@ -73,12 +77,10 @@
             android:id="@+id/btnDetailOrder"
             android:layout_width="145dp"
             android:layout_height="40dp"
-            android:layout_marginTop="1dp"
             android:backgroundTint="#0017A9"
             android:text="Detail"
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout6"
-            app:layout_constraintEnd_toEndOf="@+id/btnStatus"
-            app:layout_constraintTop_toBottomOf="@+id/btnStatus" />
+            app:layout_constraintEnd_toEndOf="@+id/btnStatus" />
 
         <Button
             android:id="@+id/btnStatus"
@@ -110,6 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:text="Rp. 100000"
+            android:textColor="#020202"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

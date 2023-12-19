@@ -202,6 +202,8 @@ class OrderPage : AppCompatActivity() {
                 }
             }
         }
+        //ubah jam ke format string biasa
+
         //submit order
         _btnSubmit.setOnClickListener {
             //cek input lapangan dan jam
@@ -219,7 +221,7 @@ class OrderPage : AppCompatActivity() {
                             "idOrder" to  idOrder.toString(),
                             "usernameOrder" to username,
                             "idCoachOrder" to _dataCoach.id,
-                            "timeOrder" to simpanJam.toString(),
+                            "timeOrder" to simpanJam.joinToString(", "),
                             "dateTrainingOrder" to _tvDate.text.toString(),
                             "facilityOrder" to lapangan,
                             "dateOrder" to formattedDate.toString(),
@@ -236,6 +238,9 @@ class OrderPage : AppCompatActivity() {
                     "Order Successful",
                     Toast.LENGTH_LONG
                 ).show()
+                //langsung pindah ke home
+                val intent = Intent(this@OrderPage,MainActivity::class.java)
+                startActivity(intent)
 
             } else {
                 Toast.makeText(
