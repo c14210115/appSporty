@@ -52,7 +52,6 @@
                 android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nama"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -82,7 +81,6 @@
                 android:id="@+id/textViewAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="your age"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -112,7 +110,6 @@
                 android:id="@+id/textViewGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="your gender"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -142,7 +139,6 @@
                 android:id="@+id/textViewPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nomor Telepon"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -172,7 +168,6 @@
                 android:id="@+id/textViewEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -202,7 +197,6 @@
                 android:id="@+id/textViewCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="your sports category"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 
@@ -232,7 +226,6 @@
                 android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="your descriptions"
                 android:textSize="19dp"
                 android:textStyle="bold" />
 

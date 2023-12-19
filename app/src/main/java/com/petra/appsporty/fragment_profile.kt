@@ -114,13 +114,21 @@ class fragment_profile : Fragment() {
                     document.data!!.get("userPw").toString()
 
                 )
-                textViewName.text = "Nama: ${user.userName}"
-                textViewPhoneNumber.text = "Nomor Telepon: ${user.userTelp}"
-                textViewAge.text = "Umur: ${user.userAge}"
-                textViewEmail.text = "Email: ${user.userEmail}"
-                textViewGender.text = "Gender: ${user.userGender}"
-                textViewCategory.text = "Category: ${user.usercategory}"
-                textViewDescription.text = "Desc: ${user.userNotes}"
+                textViewName.text = user.userName
+                textViewPhoneNumber.text = user.userTelp
+                if(user.userAge != null.toString()) {
+                    textViewAge.text = user.userAge
+                }
+                textViewEmail.text = user.userEmail
+                if(user.userGender != null.toString()) {
+                    textViewGender.text = user.userGender
+                }
+                if(user.usercategory != null.toString()) {
+                    textViewCategory.text = user.usercategory
+                }
+                if(user.userNotes != null.toString()) {
+                    textViewDescription.text = user.userNotes
+                }
 
             }
             .addOnFailureListener { e ->
