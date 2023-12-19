@@ -56,10 +56,9 @@ class fragment_editProfile : Fragment() {
         editTextPhoneNumber = view.findViewById(R.id.editTextPhoneNumber)
         editTextAge = view.findViewById(R.id.editTextAge)
         editTextEmail = view.findViewById(R.id.editTextEmail)
-        editTextExperience = view.findViewById(R.id.editTextCategory)
         editTextGender = view.findViewById(R.id.textViewGender)
         editTextCategory = view.findViewById(R.id.editTextCategory)
-        editTextDescription = view.findViewById(R.id.etEditDescription)
+        editTextDescription = view.findViewById(R.id.editTextDescription)
         btnback = view.findViewById(R.id.btnBack)
 
         buttonSave = view.findViewById(R.id.buttonSave)
@@ -105,7 +104,7 @@ class fragment_editProfile : Fragment() {
             dbProfile.collection("users").document(username.toString())
                 .update("usercategory", editTextCategory.text.toString())
         }
-        if (editTextDescription.toString().isNotEmpty()) {
+        else if (editTextDescription.toString().isNotEmpty()) {
             dbProfile.collection("users").document(username.toString())
                 .update("userNotes", editTextDescription.text.toString())
         }
