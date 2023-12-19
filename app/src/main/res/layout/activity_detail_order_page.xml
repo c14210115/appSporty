@@ -197,11 +197,11 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnBackHome"
-        app:layout_constraintStart_toEndOf="@+id/btnBackHome"
-        app:layout_constraintTop_toTopOf="@+id/btnBackHome" />
+        app:layout_constraintStart_toEndOf="@+id/btnBackDetailToHome"
+        app:layout_constraintTop_toTopOf="@+id/btnBackDetailToHome" />
 
     <ImageButton
-        android:id="@+id/btnBackHome"
+        android:id="@+id/btnBackDetailToHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -224,7 +224,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_judulDetail">
 
         <TextView
-            android:id="@+id/textView37"
+            android:id="@+id/tvDetail_statusOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Status  : Berlangsung"

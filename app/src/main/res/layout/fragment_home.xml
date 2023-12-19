@@ -116,7 +116,7 @@
                 android:layout_width="110dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
-                android:backgroundTint="#0017AA"
+                android:backgroundTint="#560017AA"
                 android:text="Ongoing" />
 
             <Button
@@ -124,7 +124,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
-                android:backgroundTint="#0017AA"
+                android:backgroundTint="#560017AA"
                 android:text="Done" />
 
             <Button
@@ -132,7 +132,7 @@
                 android:layout_width="110dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
-                android:backgroundTint="#0017AA"
+                android:backgroundTint="#560017AA"
                 android:text="Cancel" />
 
         </LinearLayout>

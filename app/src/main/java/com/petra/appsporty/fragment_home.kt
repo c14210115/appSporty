@@ -1,5 +1,6 @@
 package com.petra.appsporty
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -32,25 +33,90 @@ private const val ARG_PARAM2 = "param2"
  * Use the [fragment_home.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+// notclicked : #560017AA
+// clicked : #0017AA
+
 class fragment_home : Fragment() {
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            fragment_home().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+        // simpan listOrder
+        var listOrderUsers = arrayListOf<Order>()
+        var listCoach = arrayListOf<Coach>()
+        var adapterP : OrderListAdapter = OrderListAdapter(listOrderUsers)
+    }
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var textViewDispDate: TextView
     lateinit var _rv_itemOrder : RecyclerView
 
-    // simpan listOrder
-    var listOrderUsers = arrayListOf<Order>()
 
-    var adapterP : OrderListAdapter = OrderListAdapter(listOrderUsers)
+    fun getCoachFromDatabase(idCoach : String) : Coach? {
+        val dbCoach = Firebase.firestore.collection("tbListCoach")
+        var coach : Coach? = null
+        dbCoach.get()
+            .addOnSuccessListener { listCoach ->
+                for (coachData in listCoach) {
+                    // cek misal sama idnya
+                    if (idCoach == coachData.id) {
+                        // simpan dulu sebagai coach
+                        var id = coachData.get("id").toString()
+                        var nama = coachData.get("name").toString()
+                        var umur = coachData.get("age").toString()
+                        var kategori = coachData.get("category").toString()
+                        var lapangan = coachData.get("facility").toString()
+                        var isfav = coachData.get("isFav").toString()
+                        var lokasi = coachData.get("location").toString()
+                        var catatan = coachData.get("notes").toString()
+                        var foto = coachData.get("photo").toString()
+                        var harga = coachData.get("price").toString()
+                        var rating = coachData.get("rating").toString()
+                        var telp = coachData.get("telp").toString()
+                        var time = coachData.get("time").toString()
+                        var trained = coachData.get("trained").toString()
+                        var ig = coachData.get("instagram").toString()
 
+                        // masukin sebagai class coach
+                        var getDataCoach = Coach(
+                            id,
+                            foto,
+                            nama,
+                            kategori,
+                            lokasi,
+                            umur,
+                            harga,
+                            isfav,
+                            rating,
+                            trained,
+                            catatan,
+                            telp,
+                            ig,
+                            lapangan,
+                            time
+                        )
 
+                        coach = getDataCoach
+                    }
+                }
+            }
+        Log.d("TAG COACH DATA", "HASIL COACH ${coach!!.name}")
+        return coach
+    }
 
     private suspend fun readDBOrders(): ArrayList<Order> {
         val db = Firebase.firestore
         // simpan data di arraylist
         var listOrder : ArrayList<Order> = arrayListOf()
         var activityNow = activity as MainActivity
+        var adapterP : OrderListAdapter
 
         // looping di database
         val documents = db.collection("users").document(activityNow.getMyUsername()!!).collection("tbOrder").get().await()
@@ -117,6 +183,18 @@ class fragment_home : Fragment() {
         _rv_itemOrder.layoutManager = LinearLayoutManager(context)
         _rv_itemOrder.adapter = adapterP
 
+        adapterP.setOnItemClickCallback(object : OrderListAdapter.OnItemClickCallback {
+            override fun onBtnDetailClicked(dataOrder: Order, dataCoach: Coach) {
+                // pindah ke dalam activity selanjutnya
+                var intent = Intent(requireContext(), DetailOrderPage::class.java)
+
+                DetailOrderPage.dataOrder = dataOrder
+                DetailOrderPage.dataCoach = dataCoach
+
+                startActivity(intent)
+            }
+        })
+
 
         // baca database
         // didapat dari Database langsung dipassing ke dalam tampilkan data
@@ -124,10 +202,12 @@ class fragment_home : Fragment() {
         lifecycleScope.launch(Dispatchers.IO) {
             // coba ambil ini dulu
             listOrderUsers = readDBOrders()
+            listCoach = getListCoachFromDatabase()
 
             // kalo udah baru set data
             withContext(Dispatchers.Main) {
                 adapterP.SetData(listOrderUsers)
+                adapterP.notifyDataSetChanged()
             }
         }
 
@@ -137,16 +217,54 @@ class fragment_home : Fragment() {
         return view
     }
 
+}
 
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_home().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+fun getListCoachFromDatabase() : ArrayList<Coach> {
+    val dbCoach = Firebase.firestore.collection("tbListCoach")
+    var listDataCoach : ArrayList<Coach> = arrayListOf()
+    dbCoach.get()
+        .addOnSuccessListener { listCoachDB ->
+            for (coachData in listCoachDB) {
+                // simpan dulu sebagai coach
+                var id = coachData.get("id").toString()
+                var nama = coachData.get("name").toString()
+                var umur = coachData.get("age").toString()
+                var kategori = coachData.get("category").toString()
+                var lapangan = coachData.get("facility").toString()
+                var isfav = coachData.get("isFav").toString()
+                var lokasi = coachData.get("location").toString()
+                var catatan = coachData.get("notes").toString()
+                var foto = coachData.get("photo").toString()
+                var harga = coachData.get("price").toString()
+                var rating = coachData.get("rating").toString()
+                var telp = coachData.get("telp").toString()
+                var time = coachData.get("time").toString()
+                var trained = coachData.get("trained").toString()
+                var ig = coachData.get("instagram").toString()
+
+                // masukin sebagai class coach
+                var getDataCoach = Coach(
+                    id,
+                    foto,
+                    nama,
+                    kategori,
+                    lokasi,
+                    umur,
+                    harga,
+                    isfav,
+                    rating,
+                    trained,
+                    catatan,
+                    telp,
+                    ig,
+                    lapangan,
+                    time
+                )
+
+                listDataCoach.add(getDataCoach)
             }
-    }
+        }
+    Log.d("TAG COACH DATA", "HASIL COACH ${listDataCoach!!.size}")
+    return listDataCoach
 }
