@@ -1,5 +1,6 @@
 package com.petra.appsporty
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
@@ -45,6 +47,7 @@ class fragment_list_coach : Fragment() {
     private lateinit var coachListAdapter: CoachListAdapter
     private var filteredList : ArrayList<Coach> = ArrayList()
     private lateinit var adapterP: CoachListAdapter
+    lateinit var floatingBtn : FloatingActionButton
 
     val dbUser = Firebase.firestore
 
@@ -82,10 +85,15 @@ class fragment_list_coach : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // setting floaitng
+        floatingBtn = view.findViewById(R.id.floatingBtn1)
+
         _rvCoach = view.findViewById(R.id.rvCoachList)
         SiapkanData()
-        TambahData()
-        TampilkanData()
+//        TambahData()
+//        TampilkanData()
+        ViewDataCoachFirebase() // read db
+
         val etFilterName: EditText = view.findViewById(R.id.etFilterName)
         val btnApplyFilters: ImageButton = view.findViewById(R.id.btnApplyFilters)
 
@@ -99,6 +107,14 @@ class fragment_list_coach : Fragment() {
             adapterP.notifyDataSetChanged()
         }
         var btnDetail = view.findViewById<Button>(R.id.btnInfo)
+
+
+        // setting floating btn tambah ke firebase
+        floatingBtn.setOnClickListener {
+            // pindah activity baru
+            val intent = Intent(requireContext(), TambahCoach::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateView(
@@ -110,6 +126,34 @@ class fragment_list_coach : Fragment() {
         val rvCoachList: RecyclerView = view.findViewById(R.id.rvCoachList)
 
         return view
+    }
+    private fun ViewDataCoachFirebase(){
+        coachList.clear()
+        dbUser.collection("tbListCoach").get().addOnSuccessListener {id ->
+            for (document in id) {
+                val data =
+                    Coach(
+                        document.data["id"].toString(),
+                        document.data["photo"].toString(),
+                        document.data["name"].toString(),
+                        document.data["category"].toString(),
+                        document.data["location"].toString(),
+                        document.data["age"].toString(),
+                        document.data["price"].toString(),
+                        document.data["isFav"].toString(),
+                        document.data["rating"].toString(),
+                        document.data["trained"].toString(),
+                        document.data["notes"].toString(),
+                        document.data["telp"].toString(),
+                        document.data["instagram"].toString(),
+                        document.data["facility"].toString(),
+                        document.data["time"].toString()
+                    )
+                coachList.add(data)
+            }
+            //tampilkan ke Adapter dan itemnya
+            TampilkanData()
+        }
     }
 
     private fun SiapkanData(){
@@ -240,4 +284,6 @@ class fragment_list_coach : Fragment() {
 //        }
 
     }
+
+
 }
