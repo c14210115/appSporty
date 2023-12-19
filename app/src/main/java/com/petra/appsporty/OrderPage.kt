@@ -67,7 +67,6 @@ class OrderPage : AppCompatActivity() {
 
         // jika edt ditekan maka menjalankan fungsi datepicker
         _tvDate.setOnClickListener{
-
             showDatePicker()
         }
 
