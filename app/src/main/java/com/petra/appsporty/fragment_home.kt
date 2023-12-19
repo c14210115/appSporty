@@ -192,6 +192,7 @@ class fragment_home : Fragment() {
 
         // default awal adalah all
         btnClicked = _btnFilterAll
+        btnClicked.setBackgroundColor(ButtonColor.CLICKED.colorval)
 
         // baca database
         // didapat dari Database langsung dipassing ke dalam tampilkan data
