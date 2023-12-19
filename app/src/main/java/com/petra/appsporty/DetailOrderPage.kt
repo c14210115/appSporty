@@ -1,6 +1,7 @@
 package com.petra.appsporty
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -55,7 +56,7 @@ class DetailOrderPage : AppCompatActivity() {
         _tvDetail_tanggalDipesan = findViewById(R.id.tvDetail_tanggalDipesan)
         _tvDetail_totalHarga = findViewById(R.id.tvDetail_totalHarga)
         _btnBatal = findViewById(R.id.btnBatalPesanan)
-        _btnBackHome= findViewById(R.id.btnBackDetailToHome)
+        _btnBackHome = findViewById(R.id.btnBackDetailToHome)
 
         // bind data dengan textview
         _tvDetail_statusOrder.text = "Status: " + dataOrder!!.status.nama
@@ -112,7 +113,6 @@ class DetailOrderPage : AppCompatActivity() {
                         // kalo ini di klik maka set data sekarang menjadi dibatalkan
                         // dispatcher soalnya jalan dibelakang layar
                         CoroutineScope(Dispatchers.IO).async {
-
                             // update ke database
                             val dbOrderUsers = Firebase.firestore.collection("users")
                                 .document(dataOrder!!.username).collection("tbOrder")
@@ -133,17 +133,15 @@ class DetailOrderPage : AppCompatActivity() {
                                 )
                                 dbOrderUsers.document(dataOrder!!.id).set(orderMap)
 
-                                withContext(Dispatchers.Main) {
-                                    fragment_home.adapterP.notifyDataSetChanged()
+//                                fragment_home.adapterP.notifyDataSetChanged()
 
-                                    // balik ke halaman sebelumnya?
-                                    Toast.makeText(
-                                        this@DetailOrderPage,
-                                        "Pesanan Dibatalkan",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    finish() // posisi pindah onresume?
-                                }
+                                // balik ke halaman sebelumnya?
+                                Toast.makeText(
+                                    this@DetailOrderPage,
+                                    "Pesanan Dibatalkan",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                startActivity(Intent(this@DetailOrderPage, MainActivity::class.java))
                             }
                         }
                     }

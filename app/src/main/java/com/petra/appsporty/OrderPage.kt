@@ -54,7 +54,7 @@ class OrderPage : AppCompatActivity() {
 
         //menggunakan fungsi tombol back
         _btnBack.setOnClickListener {
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
 
         //DATE
