@@ -46,9 +46,13 @@
         android:id="@+id/floatingBtn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="100dp"
         android:clickable="true"
-        android:src="@drawable/account"
-        app:layout_constraintEnd_toStartOf="@+id/btnApplyFilters"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/addicon"
+        app:backgroundTint="#0017AA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="#FFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
